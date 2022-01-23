@@ -5,8 +5,8 @@ on:
       - master
   pull_request:
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  static-analysis:
+    name: Static Analysis
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,7 +16,8 @@ jobs:
         with:
           node-version: '16'
       - run: yarn install
-      - run: yarn test -- --coverage
+      - name: Tests
+        run: yarn test -- --coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         if: always()
@@ -25,4 +26,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
+            -Dsonar.organization=meteorae
+            -Dsonar.projectKey=meteorae_web
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
