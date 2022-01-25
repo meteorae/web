@@ -1,16 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { HashRouter } from 'react-router-dom';
-import { Normalize } from 'styled-normalize';
-
+import startsWith from 'lodash-es/startsWith';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-
 import './i18n';
-import './index.css';
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'development') {
   Sentry.init({
@@ -19,10 +14,10 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'development') {
     // https://github.com/getsentry/sentry-javascript/issues/4118
     integrations: [new Integrations.BrowserTracing()],
     tracesSampleRate: 1.0,
-    beforeSend(event, _hint) {
+    beforeSend(event) {
       // Avoid sending the URL of the current server
       if (event.request?.url) {
-        if (event.request.url.startsWith('https://')) {
+        if (startsWith(event.request.url, 'https://')) {
           event.request.url = 'https://[redacted]';
         } else {
           event.request.url = 'http://[redacted]';
@@ -41,14 +36,9 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter>
-      <ApolloProvider client={client}>
-        <Normalize />
-        <App />
-      </ApolloProvider>
-    </HashRouter>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
-
-reportWebVitals(console.log);
