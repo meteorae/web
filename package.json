@@ -44,7 +44,8 @@
     "build-storybook": "build-storybook -s public",
     "chromatic": "chromatic --project-token=10adfe197881",
     "lint": "eslint .",
-    "commit": "cz"
+    "commit": "cz",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -59,6 +60,11 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.2",
     "@storybook/addon-a11y": "^6.4.13",
     "@storybook/addon-actions": "^6.4.12",
     "@storybook/addon-essentials": "^6.4.12",
@@ -97,6 +103,7 @@
     "lint-staged": "^12.1.7",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
+    "semantic-release": "^19.0.2",
     "storybook-addon-performance": "^0.16.1"
   },
   "config": {

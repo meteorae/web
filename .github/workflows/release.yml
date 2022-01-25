@@ -1,30 +1,17 @@
-name: 'CodeQL'
-
+name: Release
 on:
   push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-  schedule:
-    - cron: '15 2 * * 0'
-
+    branches:
+      - master
 jobs:
-  analyze:
-    name: Analyze
+  release:
+    name: Release
     runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-
-    strategy:
-      fail-fast: false
-      matrix:
-        language: ['javascript']
-
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
@@ -38,13 +25,13 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: ${{ matrix.language }}
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build
         run: yarn build
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
+      - name: Package release
+        run: cd build && zip -r ../web.zip . && cd ..
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn run semantic-release
