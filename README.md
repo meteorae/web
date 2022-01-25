@@ -31,6 +31,9 @@
         <img alt="Storybook" src="https://cdn.jsdelivr.net/gh/storybookjs/brand@main/badge/badge-storybook.svg">
     </a>
     <img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/meteorae/web">
+    <a href="http://commitizen.github.io/cz-cli">
+        <img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg">
+    </a>
 </p>
 
 ## Overview

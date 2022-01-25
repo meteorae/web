@@ -43,7 +43,8 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "chromatic": "chromatic --project-token=10adfe197881",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "commit": "cz"
   },
   "browserslist": {
     "production": [
@@ -74,7 +75,9 @@
     "apollo": "^2.33.9",
     "autoprefixer": "^10.4.2",
     "chromatic": "^6.4.1",
+    "commitizen": "^4.2.4",
     "confusing-browser-globals": "^1.0.11",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
@@ -95,5 +98,10 @@
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
     "storybook-addon-performance": "^0.16.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
