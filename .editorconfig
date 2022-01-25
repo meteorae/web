@@ -1,0 +1,20 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{js,jsx,ts,tsx}]
+indent_style = space
+indent_size = 2
+max_line_length = 80
+
+[*.{css,scss,sass,less}]
+indent_style = space
+indent_size = 2
+max_line_length = 80
+
+[*.{json,json5,jsonc,jsonld,json5}]
+indent_style = space
+indent_size = 2
+max_line_length = 80
