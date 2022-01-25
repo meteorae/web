@@ -1,9 +1,7 @@
-name: main
-on:
-  push:
-    branches:
-      - master
-  pull_request:
+name: 'Code Quality'
+
+on: [push, pull_request]
+
 jobs:
   static-analysis:
     name: Static Analysis
@@ -15,7 +13,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - run: yarn install
+      - name: Install dependencies
+        run: yarn install
       - name: Tests
         run: yarn test -- --coverage
       - name: SonarCloud Scan
@@ -29,3 +28,20 @@ jobs:
             -Dsonar.organization=meteorae
             -Dsonar.projectKey=meteorae_web
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+  chromatic-deployment:
+    name: Chromatic Deployment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: yarn install
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
