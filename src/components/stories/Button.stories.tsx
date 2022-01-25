@@ -1,5 +1,4 @@
 import { Meta } from '@storybook/react';
-import { ButtonStyleProps } from 'styled-system';
 
 import { Button, ButtonPrimary } from '../Button';
 import { ButtonBaseProps } from '../Button/ButtonBase';
@@ -20,13 +19,13 @@ export default {
   },
 } as Meta;
 
-export const defaultButton = (args: StrictButtonStyleProps) => (
+export const DefaultButton = (args: StrictButtonStyleProps) => (
   <Button {...args}>Default Button</Button>
 );
-export const primaryButton = (args: StrictButtonStyleProps) => (
+export const PrimaryButton = (args: StrictButtonStyleProps) => (
   <ButtonPrimary {...args}>Primary Button</ButtonPrimary>
 );
-export const disabledButton = (args: StrictButtonStyleProps) => {
+export const DisabledButton = (args: StrictButtonStyleProps) => {
   const props = { disabled: true, ...args };
   return <Button {...props}>Disabled Button</Button>;
 };

@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react';
+import React, { useState } from 'react';
 import { Meta } from '@storybook/react';
 
 import { TextInput, TextInputProps } from '../TextInput';

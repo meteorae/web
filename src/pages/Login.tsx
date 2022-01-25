@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { themeGet } from '@styled-system/theme-get';
-import styled from 'styled-components';
 import { Formik } from 'formik';
-import { object, string, number, date, InferType } from 'yup';
+import { object, string } from 'yup';
 
 import LayoutDialog from '../components/LayoutDialog';
 import TextInput from '../components/TextInput/TextInput';
