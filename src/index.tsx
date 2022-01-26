@@ -1,11 +1,19 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import {
+  ApolloClient,
+  ApolloProvider,
+  createHttpLink,
+  InMemoryCache,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import startsWith from 'lodash-es/startsWith';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import App from './App';
-import './i18n';
+import './app/i18n';
+import { store } from './app/store';
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'development') {
   Sentry.init({
@@ -29,16 +37,34 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'development') {
   });
 }
 
-const client = new ApolloClient({
+const httpLink = createHttpLink({
   uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      Authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

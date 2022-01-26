@@ -4,7 +4,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:jsdoc/recommended',
+    //'plugin:jsdoc/recommended',
     'plugin:jest/recommended',
     'plugin:jest/style',
     'plugin:jest-formatting/strict',
@@ -31,6 +31,7 @@ module.exports = {
       version: 'detect',
     },
   },
+  ignorePatterns: ['**/__generated__/**'],
   rules: {
     'no-restricted-globals': ['error'].concat(restrictedGlobals),
     'graphql/template-strings': [

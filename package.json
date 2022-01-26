@@ -11,6 +11,7 @@
     "@emotion/styled": "^11",
     "@mdi/js": "^6.5.95",
     "@mdi/react": "^1.5.0",
+    "@reduxjs/toolkit": "^1.7.1",
     "@sentry/react": "^6.16.1",
     "@sentry/tracing": "^6.16.1",
     "@testing-library/jest-dom": "^5.14.1",
@@ -21,6 +22,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
+    "@types/react-redux": "^7.1.22",
     "color2k": "^1.2.5",
     "formik": "^2.2.9",
     "framer-motion": "^5",
@@ -31,6 +33,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.15.3",
+    "react-redux": "^7.2.6",
     "react-relay": "^13.0.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
@@ -49,7 +52,10 @@
     "chromatic": "chromatic --project-token=10adfe197881",
     "lint": "eslint .",
     "commit": "cz",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "graphql:update": "yarn run graphql:update-schema && yarn run graphql:update-types",
+    "graphql:update-schema": "apollo client:download-schema",
+    "graphql:update-types": "apollo client:codegen  --localSchemaFile=schema.json --target=typescript --tagName=gql"
   },
   "browserslist": {
     "production": [
