@@ -9,6 +9,7 @@
     <a href="https://github.com/meteorae/web/issues">
         <img alt="GitHub issues" src="https://img.shields.io/github/issues/meteorae/web">
     </a>
+    <img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/meteorae/web">
     <img alt="GitHub release (latest by SemVer)" src="https://img.shields.io/github/downloads/meteorae/web/latest/total">
 </p>
 <p align="center">
