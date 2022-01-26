@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/meteorae/web/compare/v1.0.0...v1.1.0) (2022-01-26)
+
+
+### Features
+
+* **i18n:** added translation for French ([49686e4](https://github.com/meteorae/web/commit/49686e45dda5fd298191ca96c2824f377be3a949))
+
 # 1.0.0 (2022-01-26)
 
 
