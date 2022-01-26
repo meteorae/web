@@ -13,13 +13,13 @@
     <img alt="GitHub release (latest by SemVer)" src="https://img.shields.io/github/downloads/meteorae/web/latest/total">
 </p>
 <p align="center">
-    <a href="https://sonarcloud.io/summary/new_code?id=meteorae_server">
+    <a href="https://sonarcloud.io/summary/new_code?id=meteorae_web">
         <img alt="Coverage" src="https://sonarcloud.io/api/project_badges/measure?project=meteorae_web&metric=coverage">
     </a>
-    <a href="https://sonarcloud.io/summary/new_code?id=meteorae_server">
+    <a href="https://sonarcloud.io/summary/new_code?id=meteorae_web">
         <img alt="Maintainability Rating" src="https://sonarcloud.io/api/project_badges/measure?project=meteorae_web&metric=sqale_rating">
     </a>
-    <a href="https://sonarcloud.io/summary/new_code?id=meteorae_server">
+    <a href="https://sonarcloud.io/summary/new_code?id=meteorae_web">
         <img alt="Technical Debt" src="https://sonarcloud.io/api/project_badges/measure?project=meteorae_web&metric=sqale_index">
     </a>
     <a href="https://sonarcloud.io/summary/new_code?id=meteorae_web">
