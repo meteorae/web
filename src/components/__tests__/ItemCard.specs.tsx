@@ -29,4 +29,10 @@ describe('ItemCard', () => {
     expect(screen.getByText('Lorem Ipsum')).toBeDefined();
     expect(screen.getByText('2020')).toBeDefined();
   });
+
+  it("should use the item's title as the image's alt text", () => {
+    render(<ItemCard item={item} />);
+
+    expect(screen.getByAltText('Lorem Ipsum')).toBeDefined();
+  });
 });
