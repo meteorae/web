@@ -12,11 +12,12 @@ import {
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { APIRequestStatus } from '../types/store';
-import { useDispatch } from 'react-redux';
 import { loginUser } from '../features/auth/authSlice';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { push } from 'redux-first-history';
+import noop from 'lodash/noop';
 
 const LoginSchema = Yup.object().shape({
   username: Yup.string().required('Required'),
@@ -30,8 +31,7 @@ const LoginSchema = Yup.object().shape({
  */
 function Login() {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const location = useLocation();
 
   const { from } = (location.state as { from: { pathName: string } }) || {
@@ -49,13 +49,18 @@ function Login() {
             initialValues={{ username: '', password: '' }}
             validationSchema={LoginSchema}
             onSubmit={async ({ username, password }, { setSubmitting }) => {
-              dispatch(
-                loginUser({
-                  data: { username, password },
-                  from: from.pathName,
-                  navigate,
-                }),
-              );
+              try {
+                await dispatch(
+                  loginUser({
+                    username,
+                    password,
+                  }),
+                ).unwrap();
+
+                dispatch(push(from.pathName));
+              } catch (error) {
+                noop();
+              }
               setSubmitting(false);
             }}>
             {({

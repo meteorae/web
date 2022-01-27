@@ -4,7 +4,6 @@ import { AppDispatch, RootState } from '../../app/store';
 import client from '../../app/apollo';
 import { APIRequestError, APIRequestStatus } from '../../types/store';
 import { Login, LoginVariables, Login_login_user } from './__generated__/Login';
-import type { NavigateFunction } from 'react-router-dom';
 
 interface AuthState {
   user: Login_login_user | null;
@@ -31,18 +30,19 @@ const LOGIN_MUTATION = gql`
 `;
 
 export const loginUser = createAsyncThunk<
-  { data: Login; from: string; navigate: NavigateFunction },
-  { data: LoginVariables; from: string; navigate: NavigateFunction },
+  Login,
+  LoginVariables,
   { dispatch: AppDispatch; state: AuthState; extra: typeof client }
->('auth/login', async ({ data, from, navigate }, { extra: apolloClient }) => {
+>('auth/login', async (data, { extra: apolloClient }) => {
   const { username, password } = data;
 
   const response = await apolloClient.mutate({
     mutation: LOGIN_MUTATION,
     variables: { username, password },
+    fetchPolicy: 'no-cache',
   });
 
-  return { data: response.data, from, navigate };
+  return response.data;
 });
 
 export const authSlice = createSlice({
@@ -60,15 +60,14 @@ export const authSlice = createSlice({
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        const { data, from, navigate } = action.payload;
+        const { login } = action.payload;
 
         state.status = APIRequestStatus.Success;
         state.error = null;
 
-        if (data.login?.token) {
-          localStorage.setItem('token', data.login.token);
-          state.user = data.login.user;
-          navigate(from);
+        if (login?.token) {
+          localStorage.setItem('token', login.token);
+          state.user = login.user;
         } else {
           state.error = 'No token returned from server';
         }

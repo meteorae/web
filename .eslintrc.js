@@ -39,8 +39,9 @@ module.exports = {
       {
         env: 'apollo',
         validators: 'all',
-        schemaJson: require('./schema.json'),
+        schemaJson: require('./src/schema.json'),
       },
     ],
+    'jest/consistent-test-it': ['error'],
   },
 };
