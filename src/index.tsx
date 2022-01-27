@@ -8,7 +8,7 @@ import App from './App';
 import './app/i18n';
 import { history, store } from './app/store';
 import { HistoryRouter } from 'redux-first-history/rr6';
-import client from './app/apollo';
+import apolloClient from './app/apolloClient';
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'development') {
   Sentry.init({
@@ -35,7 +35,7 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'development') {
 ReactDOM.render(
   <Provider store={store}>
     <HistoryRouter history={history}>
-      <ApolloProvider client={client}>
+      <ApolloProvider client={apolloClient}>
         <App />
       </ApolloProvider>
     </HistoryRouter>

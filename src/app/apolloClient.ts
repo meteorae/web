@@ -36,7 +36,7 @@ const typesMap = {
 
 const scalarLink = ApolloLink.from([withScalars({ schema, typesMap })]);
 
-const client = new ApolloClient({
+const apolloClient = new ApolloClient({
   link: authLink.concat(scalarLink).concat(httpLink),
   cache: new InMemoryCache({
     typePolicies: {
@@ -65,4 +65,4 @@ const client = new ApolloClient({
   }),
 });
 
-export default client;
+export default apolloClient;

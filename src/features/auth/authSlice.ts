@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppDispatch, RootState } from '../../app/store';
-import client from '../../app/apollo';
+import apolloClient from '../../app/apolloClient';
 import { APIRequestError, APIRequestStatus } from '../../types/store';
 import { Login, LoginVariables, Login_login_user } from './__generated__/Login';
 
@@ -32,8 +32,8 @@ const LOGIN_MUTATION = gql`
 export const loginUser = createAsyncThunk<
   Login,
   LoginVariables,
-  { dispatch: AppDispatch; state: AuthState; extra: typeof client }
->('auth/login', async (data, { extra: apolloClient }) => {
+  { dispatch: AppDispatch; state: AuthState }
+>('auth/login', async (data) => {
   const { username, password } = data;
 
   const response = await apolloClient.mutate({
