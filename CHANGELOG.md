@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/meteorae/web/compare/v1.1.0...v1.2.0) (2022-01-27)
+
+
+### Features
+
+* add item cards and item grid ([6ad88dc](https://github.com/meteorae/web/commit/6ad88dc67c473e4f8559e48013e020795c2c8738))
+
 # [1.1.0](https://github.com/meteorae/web/compare/v1.0.0...v1.1.0) (2022-01-26)
 
 
