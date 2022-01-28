@@ -9,6 +9,8 @@ import './app/i18n';
 import { history, store } from './app/store';
 import { HistoryRouter } from 'redux-first-history/rr6';
 import apolloClient from './app/apolloClient';
+import theme from './theme';
+import { ChakraProvider } from '@chakra-ui/react';
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'development') {
   Sentry.init({
@@ -36,7 +38,9 @@ ReactDOM.render(
   <Provider store={store}>
     <HistoryRouter history={history}>
       <ApolloProvider client={apolloClient}>
-        <App />
+        <ChakraProvider theme={theme}>
+          <App />
+        </ChakraProvider>
       </ApolloProvider>
     </HistoryRouter>
   </Provider>,
