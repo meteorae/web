@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/meteorae/web/compare/v1.2.0...v1.3.0) (2022-01-28)
+
+
+### Bug Fixes
+
+* fix type issue ([cfea363](https://github.com/meteorae/web/commit/cfea363bf9485bbd8b92d32cba5a3b2373000c88))
+
+
+### Features
+
+* add library page ([088813b](https://github.com/meteorae/web/commit/088813b9bf42cc97b0045210a85d04d44df7acd9))
+* add theme-color meta element ([de012cf](https://github.com/meteorae/web/commit/de012cf0a2ab4432b31020cb913504e0a0b48cec))
+
 # [1.2.0](https://github.com/meteorae/web/compare/v1.1.0...v1.2.0) (2022-01-27)
 
 
