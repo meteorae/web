@@ -1,15 +1,12 @@
 import { Spinner, useColorModeValue, useTheme } from '@chakra-ui/react';
 import { Fragment, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import RequireAuth from './components/RequireAuth';
-import Home from './pages/Home';
-import Library from './pages/Library';
-import Login from './pages/Login';
 import { Helmet } from 'react-helmet';
+import { Route, Routes } from 'react-router-dom';
+import MainLayout from './components/MainLayout';
+import Login from './pages/Login';
 
 function App() {
   const theme = useTheme();
-  theme;
 
   return (
     <Fragment>
@@ -23,23 +20,8 @@ function App() {
       </Helmet>
       <Suspense fallback={<Spinner size='xl' />}>
         <Routes>
-          <Route
-            path='/'
-            element={
-              <RequireAuth redirectTo='/login'>
-                <Home />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/library/:id'
-            element={
-              <RequireAuth redirectTo='/login'>
-                <Library />
-              </RequireAuth>
-            }
-          />
           <Route path='/login' element={<Login />} />
+          <Route path='/*' element={<MainLayout />} />
         </Routes>
       </Suspense>
     </Fragment>

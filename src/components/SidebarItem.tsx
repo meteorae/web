@@ -1,4 +1,6 @@
 import { Box, Flex, FlexProps, Link, Text } from '@chakra-ui/layout';
+import { useColorModeValue } from '@chakra-ui/react';
+import Icon from '@mdi/react';
 import { ReactText } from 'react';
 import {
   Link as ReactRouterLink,
@@ -6,8 +8,6 @@ import {
   useMatch,
   useResolvedPath,
 } from 'react-router-dom';
-import Icon from '@mdi/react';
-import { useColorModeValue } from '@chakra-ui/react';
 
 interface NavItemProps extends FlexProps {
   children: ReactText;

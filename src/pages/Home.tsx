@@ -1,12 +1,7 @@
 import { Text } from '@chakra-ui/react';
-import MainLayout from '../components/MainLayout';
 
 function Home() {
-  return (
-    <MainLayout>
-      <Text>Hello world!</Text>
-    </MainLayout>
-  );
+  return <Text>Hello world!</Text>;
 }
 
 export default Home;

@@ -2,7 +2,6 @@ import { gql, useQuery } from '@apollo/client';
 import { Center, Spinner } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import ItemGrid from '../components/ItemGrid';
-import MainLayout from '../components/MainLayout';
 import { GetItems, GetItemsVariables } from './__generated__/GetItems';
 
 const GET_ITEMS = gql`
@@ -43,21 +42,19 @@ function Library() {
   if (error) return <p>Error! {error.message}</p>;
 
   return (
-    <MainLayout>
-      <ItemGrid
-        fetchMore={() => {
-          return fetchMore({
-            query: GET_ITEMS,
-            variables: {
-              libraryId: '1',
-              offset: data?.items?.items?.length ?? 0,
-              limit: 10,
-            },
-          });
-        }}
-        data={data?.items?.items ?? []}
-      />
-    </MainLayout>
+    <ItemGrid
+      fetchMore={() => {
+        return fetchMore({
+          query: GET_ITEMS,
+          variables: {
+            libraryId: '1',
+            offset: data?.items?.items?.length ?? 0,
+            limit: 10,
+          },
+        });
+      }}
+      data={data?.items?.items ?? []}
+    />
   );
 }
 
