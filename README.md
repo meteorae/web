@@ -28,12 +28,15 @@
 </p>
 <p align="center">
     <img alt="GitHub" src="https://img.shields.io/github/license/meteorae/web">
-    <a href="https://master--61ef3d85cf1d30003a502bef.chromatic.com">
-        <img alt="Storybook" src="https://cdn.jsdelivr.net/gh/storybookjs/brand@main/badge/badge-storybook.svg">
-    </a>
     <img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/meteorae/web">
     <a href="http://commitizen.github.io/cz-cli">
         <img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg">
+    </a>
+    <a href="https://github.com/prettier/prettier">
+        <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
+    </a>
+    <a href="https://master--61ef3d85cf1d30003a502bef.chromatic.com">
+        <img alt="Storybook" src="https://cdn.jsdelivr.net/gh/storybookjs/brand@main/badge/badge-storybook.svg">
     </a>
 </p>
 
