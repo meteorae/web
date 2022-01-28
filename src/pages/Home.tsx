@@ -4,16 +4,19 @@ import ItemGrid from '../components/ItemGrid';
 import { GetItems, GetItemsVariables } from './__generated__/GetItems';
 
 const GET_ITEMS = gql`
-  query GetItems($offset: Int, $limit: Int) {
-    allItems(libraryId: 0, offset: $offset, limit: $limit) {
+  query GetItems($libraryId: ID!, $offset: Int, $limit: Int) {
+    items(libraryId: $libraryId, offset: $offset, limit: $limit) {
       items {
-        id
-        title
-        releaseDate
-        thumb
-        art
+        __typename
+        ... on Movie {
+          id
+          title
+          releaseDate
+          thumb
+          art
+        }
       }
-      totalCount
+      total
     }
   }
 `;
@@ -23,7 +26,7 @@ function Home() {
     GetItems,
     GetItemsVariables
   >(GET_ITEMS, {
-    variables: { offset: 0, limit: 10 },
+    variables: { libraryId: '1', offset: 0, limit: 10 },
   });
 
   if (loading)
@@ -41,11 +44,13 @@ function Home() {
         return fetchMore({
           query: GET_ITEMS,
           variables: {
-            offset: data?.allItems?.items?.length ?? 0,
+            libraryId: '1',
+            offset: data?.items?.items?.length ?? 0,
+            limit: 10,
           },
         });
       }}
-      data={data?.allItems?.items}
+      data={data?.items?.items ?? []}
     />
   );
 }

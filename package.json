@@ -69,7 +69,7 @@
     "commit": "cz",
     "prepare": "husky install",
     "graphql:update": "yarn run graphql:update-schema && yarn run graphql:update-types",
-    "graphql:update-schema": "apollo client:download-schema",
+    "graphql:update-schema": "apollo client:download-schema src/schema.json",
     "graphql:update-types": "apollo client:codegen  --localSchemaFile=src/schema.json --target=typescript --tagName=gql"
   },
   "browserslist": {

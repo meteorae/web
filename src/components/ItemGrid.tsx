@@ -11,11 +11,11 @@ import {
   Size,
 } from 'react-virtualized';
 import ItemCard from '../components/ItemCard';
-import { GetItems_allItems } from '../pages/__generated__/GetItems';
+import { GetItems_items } from '../pages/__generated__/GetItems';
 
 type ItemGridProps = {
   fetchMore: () => Promise<unknown>;
-  data?: GetItems_allItems['items'];
+  data?: GetItems_items['items'];
 };
 
 function ItemGrid({ fetchMore, data }: ItemGridProps) {

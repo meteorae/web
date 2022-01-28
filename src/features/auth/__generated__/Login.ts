@@ -8,22 +8,19 @@
 // ====================================================
 
 export interface Login_login_user {
-  __typename: "Account";
-  id: number | null;
-  username: string | null;
+  __typename: "User";
+  id: string;
+  username: string;
 }
 
 export interface Login_login {
-  __typename: "Login";
-  token: string | null;
-  user: Login_login_user | null;
+  __typename: "AuthPayload";
+  token: string;
+  user: Login_login_user;
 }
 
 export interface Login {
-  /**
-   * Login to an existing account
-   */
-  login: Login_login | null;
+  login: Login_login;
 }
 
 export interface LoginVariables {

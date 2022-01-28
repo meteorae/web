@@ -1,9 +1,9 @@
 import { Box, Image, PropsOf, Text } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
-import { GetItems_allItems_items } from '../pages/__generated__/GetItems';
+import { GetItems_items_items } from '../pages/__generated__/GetItems';
 
 interface ItemCardOptions {
-  item?: GetItems_allItems_items | null;
+  item?: GetItems_items_items | null;
 }
 
 interface ItemCardProps extends PropsOf<'div'>, ItemCardOptions {}
@@ -41,7 +41,9 @@ function ItemCard({ item, ...props }: ItemCardProps) {
           {item?.title}
         </Text>
         <Text fontSize='xs' w='160px' maxW='160px' opacity='0.6'>
-          {DateTime.fromJSDate(item?.releaseDate).toFormat('yyyy')}
+          {item?.releaseDate
+            ? DateTime.fromSeconds(item.releaseDate).toFormat('yyyy')
+            : ''}
         </Text>
       </Box>
     </Box>
