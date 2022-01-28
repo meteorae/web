@@ -2,15 +2,13 @@ import {
   ApolloClient,
   ApolloLink,
   createHttpLink,
-  FieldFunctionOptions,
   InMemoryCache,
 } from '@apollo/client';
-import { buildClientSchema, IntrospectionQuery } from 'graphql';
 import { setContext } from '@apollo/client/link/context';
 import { withScalars } from 'apollo-link-scalars';
+import { buildClientSchema, IntrospectionQuery } from 'graphql';
 import { DateTimeResolver } from 'graphql-scalars';
 import introspectionResult from '../schema.json';
-import { GetItems, GetItemsVariables } from '../pages/__generated__/GetItems';
 
 const schema = buildClientSchema(
   introspectionResult as unknown as IntrospectionQuery,
