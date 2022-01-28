@@ -67,7 +67,7 @@
       {
         "kind": "INTERFACE",
         "name": "Item",
-        "description": "",
+        "description": "Item information.",
         "specifiedByUrl": null,
         "fields": [
           {
@@ -128,7 +128,7 @@
       {
         "kind": "OBJECT",
         "name": "ItemsResult",
-        "description": "",
+        "description": "Result of a query containing multiple items.",
         "specifiedByUrl": null,
         "fields": [
           {
@@ -178,8 +178,48 @@
       },
       {
         "kind": "OBJECT",
+        "name": "LibrariesResult",
+        "description": "Result of a query containing multiple libraries.",
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "libraries",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Library",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "total",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
         "name": "Library",
-        "description": "",
+        "description": "Library information.",
         "specifiedByUrl": null,
         "fields": [
           {
@@ -344,7 +384,7 @@
       {
         "kind": "OBJECT",
         "name": "Movie",
-        "description": "",
+        "description": "Item information about a movie.",
         "specifiedByUrl": null,
         "fields": [
           {
@@ -511,7 +551,7 @@
         "fields": [
           {
             "name": "login",
-            "description": "",
+            "description": "Authenticate user with the provided username and password.",
             "args": [
               {
                 "name": "username",
@@ -560,7 +600,7 @@
           },
           {
             "name": "register",
-            "description": "",
+            "description": "Create a new user with the provided username and password.",
             "args": [
               {
                 "name": "username",
@@ -609,7 +649,7 @@
           },
           {
             "name": "addLibrary",
-            "description": "",
+            "description": "Add a new library of the specified type, with the provided name, language and location. This will trigger a scan for all locations provided.",
             "args": [
               {
                 "name": "type",
@@ -710,7 +750,7 @@
         "fields": [
           {
             "name": "user",
-            "description": "",
+            "description": "Query the specified user.",
             "args": [
               {
                 "name": "id",
@@ -739,7 +779,7 @@
           },
           {
             "name": "users",
-            "description": "",
+            "description": "Query all users.",
             "args": [
               {
                 "name": "limit",
@@ -776,7 +816,7 @@
           },
           {
             "name": "item",
-            "description": "",
+            "description": "Query the specified item.",
             "args": [
               {
                 "name": "id",
@@ -805,7 +845,7 @@
           },
           {
             "name": "items",
-            "description": "",
+            "description": "Query all items.",
             "args": [
               {
                 "name": "limit",
@@ -855,6 +895,47 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "library",
+            "description": "Query the specified library.",
+            "args": [
+              {
+                "name": "id",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Library",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "libraries",
+            "description": "Query all libraries.",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "LibrariesResult",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -876,7 +957,7 @@
       {
         "kind": "OBJECT",
         "name": "User",
-        "description": "User model",
+        "description": "User account information.",
         "specifiedByUrl": null,
         "fields": [
           {
@@ -952,7 +1033,7 @@
       {
         "kind": "OBJECT",
         "name": "UsersResult",
-        "description": "",
+        "description": "Result of a query containing multiple users.",
         "specifiedByUrl": null,
         "fields": [
           {

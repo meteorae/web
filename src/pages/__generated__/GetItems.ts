@@ -23,6 +23,9 @@ export interface GetItems_items {
 }
 
 export interface GetItems {
+  /**
+   * Query all items.
+   */
   items: GetItems_items | null;
 }
 

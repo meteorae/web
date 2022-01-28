@@ -20,6 +20,9 @@ export interface Login_login {
 }
 
 export interface Login {
+  /**
+   * Authenticate user with the provided username and password.
+   */
   login: Login_login;
 }
 

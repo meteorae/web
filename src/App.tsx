@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import RequireAuth from './components/RequireAuth';
 import Home from './pages/Home';
+import Library from './pages/Library';
 import Login from './pages/Login';
 import theme from './theme';
 
@@ -16,6 +17,14 @@ function App() {
             element={
               <RequireAuth redirectTo='/login'>
                 <Home />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path='/library/:id'
+            element={
+              <RequireAuth redirectTo='/login'>
+                <Library />
               </RequireAuth>
             }
           />
