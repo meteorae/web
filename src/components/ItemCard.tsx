@@ -1,5 +1,17 @@
-import { Box, Image, PropsOf, Text } from '@chakra-ui/react';
+import {
+  Box,
+  IconButton,
+  Image,
+  Link,
+  PropsOf,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import { mdiPlay } from '@mdi/js';
+import Icon from '@mdi/react';
 import { DateTime } from 'luxon';
+import { useState } from 'react';
+import { Link as ReactLink } from 'react-router-dom';
 
 export interface Item {
   __typename: 'Movie';
@@ -17,6 +29,10 @@ interface ItemCardOptions {
 interface ItemCardProps extends PropsOf<'div'>, ItemCardOptions {}
 
 function ItemCard({ item, ...props }: ItemCardProps) {
+  const [showOverlay, setShowOverlay] = useState(false);
+  const overlayColor = useColorModeValue('gray.200', 'gray.700');
+  const overlayIconColor = useColorModeValue('black', 'white');
+
   return (
     <Box
       {...props}
@@ -25,19 +41,81 @@ function ItemCard({ item, ...props }: ItemCardProps) {
       flexDir='column'
       alignItems='center'
       justifyContent='center'>
-      <Image
-        borderRadius='md'
+      <Box
         w='160px'
-        maxW='160px'
         h='240px'
-        maxH='240px'
-        mb={4}
-        objectFit='cover'
+        position='relative'
         overflow='hidden'
-        alt={item?.title ?? ''}
-        src={`/image/transcode?url=/metadata/${item?.id}/thumb`}
-        shadow='base'
-      />
+        mb={4}
+        onMouseEnter={() => setShowOverlay(true)}
+        onMouseLeave={() => setShowOverlay(false)}>
+        <Box position='relative' overflow='hidden' w='160px' h='240px'>
+          <Image
+            borderRadius='md'
+            w='160px'
+            maxW='160px'
+            h='240px'
+            maxH='240px'
+            objectFit='cover'
+            overflow='hidden'
+            alt={item?.title ?? ''}
+            src={`/image/transcode?url=/metadata/${item?.id}/thumb`}
+            shadow='base'
+          />
+        </Box>
+        <Link
+          as={ReactLink}
+          to={`/item/${item?.id}`}
+          borderRadius='md'
+          display='block'
+          height='240px'
+          width='160px'
+          left='50%'
+          transform='translate(-50%, -50%)'
+          top='50%'
+          position='absolute'
+          backgroundColor={showOverlay ? overlayColor : 'transparent'}
+          opacity={showOverlay ? 0.8 : 0}
+          borderWidth={showOverlay ? '1px' : '0'}
+          borderColor={showOverlay ? 'red.500' : 'transparent'}
+        />
+        {showOverlay && (
+          <IconButton
+            colorScheme={overlayIconColor}
+            borderRadius='full'
+            left='50%'
+            transform='translate(-50%, -50%)'
+            top='50%'
+            position='absolute'
+            variant='outline'
+            borderWidth='3px'
+            size='lg'
+            aria-label={`Play ${item?.title}`}
+            icon={<Icon path={mdiPlay} size={1.5} />}
+          />
+        )}
+        <Box
+          borderRadius='md'
+          display='block'
+          height='240px'
+          width='160px'
+          left='50%'
+          transform='translate(-50%, -50%)'
+          top='50%'
+          overflow='hidden'
+          pointerEvents='none'
+          position='absolute'>
+          <Box
+            backgroundColor='red.500'
+            h='28px'
+            position='absolute'
+            right='-14px'
+            top='-14px'
+            transform='rotate(45deg)'
+            width='28px'
+          />
+        </Box>
+      </Box>
       <Box
         display='flex'
         flexDir='column'
@@ -45,10 +123,21 @@ function ItemCard({ item, ...props }: ItemCardProps) {
         w='160px'
         maxW='160px'
         overflow='hidden'>
-        <Text fontSize='xs' w='160px' maxW='160px' isTruncated>
+        <Link
+          as={ReactLink}
+          to={`/item/${item?.id}`}
+          fontSize='xs'
+          w='160px'
+          maxW='160px'
+          isTruncated>
           {item?.title}
-        </Text>
-        <Text fontSize='xs' w='160px' maxW='160px' opacity='0.6'>
+        </Link>
+        <Text
+          fontSize='xs'
+          w='160px'
+          maxW='160px'
+          opacity='0.6'
+          userSelect='none'>
           {item?.releaseDate
             ? DateTime.fromSeconds(item.releaseDate).toFormat('yyyy')
             : ''}
