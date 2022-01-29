@@ -1,5 +1,8 @@
-<h1 align="center">Meteorae Web</h1>
-<h3 align="center">React-based web client for Meteorae</h3>
+<div align="center">
+<img alt="Meteorae logo" src="https://github.com/meteorae/meta/raw/master/assets/logo-raster.png">
+<h1>Meteorae Web</h1>
+<h2>React-based web client for Meteorae</h2>
+</div>
 
 <p align="center">
     <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/meteorae/web/main">
