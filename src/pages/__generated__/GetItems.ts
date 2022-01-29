@@ -22,11 +22,21 @@ export interface GetItems_items {
   total: number | null;
 }
 
+export interface GetItems_library {
+  __typename: "Library";
+  id: string;
+  name: string;
+}
+
 export interface GetItems {
   /**
    * Query all items.
    */
   items: GetItems_items | null;
+  /**
+   * Query the specified library.
+   */
+  library: GetItems_library | null;
 }
 
 export interface GetItemsVariables {

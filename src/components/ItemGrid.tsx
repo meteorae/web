@@ -16,20 +16,23 @@ import { GetItems_items } from '../pages/__generated__/GetItems';
 type ItemGridProps = {
   fetchMore: () => Promise<unknown>;
   data?: GetItems_items['items'];
+  total: number;
 };
 
-function ItemGrid({ fetchMore, data }: ItemGridProps) {
+function ItemGrid({ fetchMore, data, total }: ItemGridProps) {
   let _onRowsRendered: (params: IndexRange) => void;
   let _grid: Grid | null = null;
 
   const [columnCount, setColumnCount] = useState(3);
   const [rowCount, setRowCount] = useState(3);
+  const [renderedRowCount, setRenderedRowCount] = useState(0);
 
   useEffect(() => {
     if (data) {
-      setRowCount(Math.ceil((data?.length ?? 0) / columnCount));
+      setRowCount(Math.ceil(total / columnCount));
+      setRenderedRowCount(Math.ceil((data?.length ?? 0) / columnCount));
     }
-  }, [columnCount, rowCount, data]);
+  }, [columnCount, rowCount, data, total]);
 
   function cellRenderer({ columnIndex, rowIndex, key, style }: GridCellProps) {
     const index = rowIndex * columnCount + columnIndex;
@@ -44,11 +47,11 @@ function ItemGrid({ fetchMore, data }: ItemGridProps) {
   }
 
   function isRowLoaded({ index }: Index) {
-    return index < rowCount - 1;
+    return index < renderedRowCount;
   }
 
   function onResize({ width }: Size) {
-    setColumnCount(Math.floor(width / (160 + 16)));
+    setColumnCount(Math.floor((width - 48 * 2) / (160 + 16)));
 
     _grid?.recomputeGridSize();
   }
@@ -91,6 +94,11 @@ function ItemGrid({ fetchMore, data }: ItemGridProps) {
                 cellRenderer={cellRenderer}
                 onCellsRendered={onRowsRendered}
                 onSectionRendered={_onSectionRendered}
+                overscanRowCount={2}
+                style={{
+                  paddingLeft: '1.5rem',
+                  paddingRight: '1.5rem',
+                }}
               />
             )}
           </AutoSizer>
