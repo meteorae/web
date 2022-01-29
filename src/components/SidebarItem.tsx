@@ -42,6 +42,9 @@ const SidebarItem = ({ children, to, icon, ...rest }: NavItemProps) => {
           align='center'
           role='group'
           cursor='pointer'
+          transitionProperty='opacity color'
+          transitionDuration='150ms'
+          transitionTimingFunction='ease-in'
           px='3'
           py='1'
           color={color}
