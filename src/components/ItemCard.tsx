@@ -1,9 +1,17 @@
 import { Box, Image, PropsOf, Text } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
-import { GetItems_items_items } from '../pages/__generated__/GetItems';
+
+export interface Item {
+  __typename: 'Movie';
+  id?: string;
+  title?: string;
+  releaseDate?: number;
+  thumb?: string;
+  art?: string;
+}
 
 interface ItemCardOptions {
-  item?: GetItems_items_items | null;
+  item?: Item | null;
 }
 
 interface ItemCardProps extends PropsOf<'div'>, ItemCardOptions {}

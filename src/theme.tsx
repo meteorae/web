@@ -9,11 +9,19 @@ const theme = extendTheme({
   styles: {
     global: (props: never) => ({
       'html, body': {
-        height: '100%',
         bg: mode('gray.100', 'gray.900')(props),
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
       },
       '#root': {
-        height: '100%',
+        bottom: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        left: 0,
+        position: 'absolute',
+        right: 0,
+        top: 0,
       },
     }),
   },

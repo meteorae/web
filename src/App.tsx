@@ -5,6 +5,9 @@ import { Route, Routes } from 'react-router-dom';
 import MainLayout from './components/MainLayout';
 import Login from './pages/Login';
 
+// eslint-disable-next-line import/no-unresolved
+import 'swiper/css';
+
 function App() {
   const theme = useTheme();
 

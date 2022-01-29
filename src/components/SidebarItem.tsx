@@ -60,7 +60,7 @@ const SidebarItem = ({ children, to, icon, ...rest }: NavItemProps) => {
           <Box mr={3}>
             <Icon path={icon} size={1.25} />
           </Box>
-          <Text lineHeight='1' pt={1}>
+          <Text lineHeight='1' pt={1} isTruncated>
             {children}
           </Text>
         </Flex>

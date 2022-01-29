@@ -1,6 +1,6 @@
-import { Box, Stack } from '@chakra-ui/layout';
+import { Box, Container, Flex, Stack } from '@chakra-ui/layout';
 import { Spinner, useColorModeValue } from '@chakra-ui/react';
-import { Suspense } from 'react';
+import { Fragment, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import Library from '../pages/Library';
@@ -9,7 +9,7 @@ import Sidebar from './Sidebar';
 
 function MainLayout() {
   return (
-    <Stack h='100%' w='100%' spacing='0'>
+    <Fragment>
       <Box
         m={2}
         height='3rem'
@@ -17,32 +17,40 @@ function MainLayout() {
         borderRadius='base'>
         Header
       </Box>
-      <Stack flexGrow='1' direction='row' spacing='0'>
-        <Sidebar />
-        <Box h='100%' w='100%'>
-          <Suspense fallback={<Spinner size='xl' />}>
-            <Routes>
-              <Route
-                path='/'
-                element={
-                  <RequireAuth redirectTo='/login'>
-                    <Home />
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path='/library/:id'
-                element={
-                  <RequireAuth redirectTo='/login'>
-                    <Library />
-                  </RequireAuth>
-                }
-              />
-            </Routes>
-          </Suspense>
-        </Box>
-      </Stack>
-    </Stack>
+      <Flex position='relative' h='100%' flexGrow='1'>
+        <Flex direction='row' w='100%'>
+          <Sidebar />
+
+          <Flex
+            direction='column'
+            grow='1'
+            height='100%'
+            pos='relative'
+            overflowX='hidden'>
+            <Suspense fallback={<Spinner size='xl' />}>
+              <Routes>
+                <Route
+                  path='/'
+                  element={
+                    <RequireAuth redirectTo='/login'>
+                      <Home />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path='/library/:id'
+                  element={
+                    <RequireAuth redirectTo='/login'>
+                      <Library />
+                    </RequireAuth>
+                  }
+                />
+              </Routes>
+            </Suspense>
+          </Flex>
+        </Flex>
+      </Flex>
+    </Fragment>
   );
 }
 
