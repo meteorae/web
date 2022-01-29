@@ -11,11 +11,13 @@ interface ItemCarouselProps {
 }
 
 function ItemCarousel({ items }: ItemCarouselProps) {
-  const [columnCount, setColumnCount] = useState(2);
+  const [slidesPerView, setSlidesPerView] = useState(2);
+  const [slidesPerGroup, setSlidesPerGroup] = useState(2);
 
   function onResize({ width }: { width: number }) {
     // Some weird maths to get similar alignment to the ItemGrid
-    setColumnCount(Math.floor((width - 16 * 2) / (160 + 13)));
+    setSlidesPerView((width - 16 * 2) / (160 + 13.5));
+    setSlidesPerGroup(Math.floor((width - 16 * 2) / (160 + 13)));
   }
 
   function onInit(swiper: SwiperClass) {
@@ -24,10 +26,11 @@ function ItemCarousel({ items }: ItemCarouselProps) {
 
   return (
     <Swiper
-      slidesPerView={columnCount}
-      slidesPerGroup={columnCount}
+      slidesPerView={slidesPerView}
+      slidesPerGroup={slidesPerGroup}
       onResize={onResize}
       onInit={onInit}
+      centerInsufficientSlides
       style={{ overflow: 'visible' }}>
       {map(items, (item) => (
         <SwiperSlide key={item?.id}>
