@@ -59,7 +59,7 @@ function ItemCard({ item, ...props }: ItemCardProps) {
             objectFit='cover'
             overflow='hidden'
             alt={item?.title ?? ''}
-            src={item?.thumb ?? ''}
+            src={item?.thumb ? `${item.thumb}&width=240&height=360` : ''}
             shadow='base'
           />
         </Box>
