@@ -1,15 +1,13 @@
 import { gql, useQuery } from '@apollo/client';
 import {
-  Box,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   Flex,
-  Heading,
   Stack,
 } from '@chakra-ui/react';
 import map from 'lodash/map';
-import ItemCarousel from '../components/ItemCarousel';
+import HubSection from '../components/HubSection';
 import { GetLatest, GetLatestVariables } from './__generated__/GetLatest';
 
 const GET_LATEST = gql`
@@ -46,23 +44,9 @@ function Home() {
       </Flex>
       <Flex h='100%' w='100%' flexDirection='column'>
         {map(data?.latest, (section) => (
-          <Box key={section?.library.id} boxSizing='border-box'>
-            <Flex
-              alignItems='center'
-              justify='space-between'
-              px={8}
-              h='2rem'
-              my={3}>
-              <Heading key={section?.library.id} size='sm'>
-                Recently added to {section?.library.name}
-              </Heading>
-            </Flex>
-            <Box boxSizing='border-box' overflow='hidden'>
-              <Box px={8} overflow='hidden'>
-                <ItemCarousel items={section?.items} />
-              </Box>
-            </Box>
-          </Box>
+          <HubSection section={section} key={section?.library.id}>
+            Recently added to {section?.library.name}
+          </HubSection>
         ))}
       </Flex>
     </Stack>

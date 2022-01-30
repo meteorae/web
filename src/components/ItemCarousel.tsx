@@ -3,14 +3,22 @@ import map from 'lodash-es/map';
 // eslint-disable-next-line import/no-unresolved
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ItemCard, { Item } from './ItemCard';
-import { Swiper as SwiperClass } from 'swiper';
-import { useState } from 'react';
+import { Navigation, Swiper as SwiperClass, Virtual } from 'swiper';
+import { RefObject, useState } from 'react';
 
 interface ItemCarouselProps {
   items?: (Item | null)[] | null;
+  prevBtn: RefObject<HTMLButtonElement>;
+  nextBtn: RefObject<HTMLButtonElement>;
+  onBeforeInit: (swiper: SwiperClass) => void;
 }
 
-function ItemCarousel({ items }: ItemCarouselProps) {
+function ItemCarousel({
+  items,
+  prevBtn,
+  nextBtn,
+  onBeforeInit,
+}: ItemCarouselProps) {
   const [slidesPerView, setSlidesPerView] = useState(2);
   const [slidesPerGroup, setSlidesPerGroup] = useState(2);
 
@@ -26,14 +34,25 @@ function ItemCarousel({ items }: ItemCarouselProps) {
 
   return (
     <Swiper
+      modules={[Virtual, Navigation]}
       slidesPerView={slidesPerView}
       slidesPerGroup={slidesPerGroup}
       onResize={onResize}
       onInit={onInit}
       centerInsufficientSlides
-      style={{ overflow: 'visible' }}>
-      {map(items, (item) => (
-        <SwiperSlide key={item?.id}>
+      style={{ overflow: 'visible' }}
+      virtual={{
+        enabled: true,
+        addSlidesAfter: 2,
+        addSlidesBefore: 2,
+      }}
+      navigation={{
+        prevEl: prevBtn.current,
+        nextEl: nextBtn.current,
+      }}
+      onBeforeInit={onBeforeInit}>
+      {map(items, (item, index) => (
+        <SwiperSlide key={item?.id} virtualIndex={index}>
           <Box w='160px'>
             <ItemCard item={item} />
           </Box>

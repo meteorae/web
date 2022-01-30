@@ -5,7 +5,7 @@ import { getIconFromLibrary } from '../utils/icons';
 import SidebarItem from './SidebarItem';
 import { GetLibraries } from './__generated__/GetLibraries';
 
-const GET_LIBRARIES = gql`
+export const GET_LIBRARIES = gql`
   query GetLibraries {
     libraries {
       libraries {
