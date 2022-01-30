@@ -1,22 +1,30 @@
 import { render, screen } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { GetItems_allItems_items } from '../../pages/__generated__/GetItems';
-import ItemCard from '../ItemCard';
+import ItemCard, { Item } from '../ItemCard';
+import { createMemoryHistory } from 'history';
+import { HistoryRouter } from 'redux-first-history/rr6';
+
+import '@testing-library/jest-dom';
 
 expect.extend(toHaveNoViolations);
 
-const item: GetItems_allItems_items = {
-  __typename: 'Item',
-  id: 0,
+const item: Item = {
+  __typename: 'Movie',
+  id: '0',
   title: 'Lorem Ipsum',
-  releaseDate: new Date('2020-01-01'),
-  thumb: '',
-  art: '',
+  releaseDate: 1403136000,
+  thumb: '/image/transcode?url=/metadata/1/thumb',
+  art: '/image/transcode?url=/metadata/1/art',
 };
 
 describe('ItemCard', () => {
   it('should have no axe violations', async () => {
-    const { container } = render(<ItemCard item={item} />);
+    const history = createMemoryHistory();
+    const { container } = render(
+      <HistoryRouter history={history}>
+        <ItemCard item={item} />
+      </HistoryRouter>,
+    );
 
     const results = await axe(container);
 
@@ -24,14 +32,24 @@ describe('ItemCard', () => {
   });
 
   it('should display the name and release year of the item', () => {
-    render(<ItemCard item={item} />);
+    const history = createMemoryHistory();
+    render(
+      <HistoryRouter history={history}>
+        <ItemCard item={item} />
+      </HistoryRouter>,
+    );
 
     expect(screen.getByText('Lorem Ipsum')).toBeDefined();
-    expect(screen.getByText('2020')).toBeDefined();
+    expect(screen.getByText('2014')).toBeDefined();
   });
 
   it("should use the item's title as the image's alt text", () => {
-    render(<ItemCard item={item} />);
+    const history = createMemoryHistory();
+    render(
+      <HistoryRouter history={history}>
+        <ItemCard item={item} />
+      </HistoryRouter>,
+    );
 
     expect(screen.getByAltText('Lorem Ipsum')).toBeDefined();
   });

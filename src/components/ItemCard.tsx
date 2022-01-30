@@ -59,11 +59,12 @@ function ItemCard({ item, ...props }: ItemCardProps) {
             objectFit='cover'
             overflow='hidden'
             alt={item?.title ?? ''}
-            src={`/image/transcode?url=/metadata/${item?.id}/thumb`}
+            src={item?.thumb ?? ''}
             shadow='base'
           />
         </Box>
         <Link
+          aria-label={item?.title ?? ''}
           as={ReactLink}
           to={`/item/${item?.id}`}
           borderRadius='md'
