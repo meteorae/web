@@ -25,6 +25,23 @@ const theme = extendTheme({
       },
     }),
   },
+  colors: {
+    gray: {
+      50: '#EDF7FA',
+      100: '#DDE9EC',
+      200: '#BFD4D9',
+      300: '#9DC6CF',
+      400: '#76B0BC',
+      500: '#529DAD',
+      600: '#407E8C',
+      700: '#2E606B',
+      800: '#1E4148',
+      900: '#112428',
+    },
+    red: {
+      500: '#DB1C2D',
+    },
+  },
 });
 
 export default theme;
