@@ -30,7 +30,7 @@ interface ItemCardProps extends PropsOf<'div'>, ItemCardOptions {}
 
 function ItemCard({ item, ...props }: ItemCardProps) {
   const [showOverlay, setShowOverlay] = useState(false);
-  const overlayColor = useColorModeValue('gray.200', 'gray.700');
+  const overlayColor = useColorModeValue('gray.200', 'gray.800');
   const overlayIconColor = useColorModeValue('black', 'white');
 
   return (
@@ -137,7 +137,7 @@ function ItemCard({ item, ...props }: ItemCardProps) {
           fontSize='xs'
           w='160px'
           maxW='160px'
-          opacity='0.6'
+          opacity='0.8'
           userSelect='none'>
           {item?.releaseDate
             ? DateTime.fromSeconds(item.releaseDate).toFormat('yyyy')

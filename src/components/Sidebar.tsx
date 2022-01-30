@@ -6,6 +6,7 @@ import SidebarItem from './SidebarItem';
 function Sidebar() {
   return (
     <Flex
+      role='navigation'
       display={{ base: 'none', lg: 'flex' }}
       direction='column'
       w='16.25rem'

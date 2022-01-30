@@ -11,6 +11,7 @@ function MainLayout() {
   return (
     <Fragment>
       <Box
+        role='banner'
         m={2}
         height='3rem'
         bg={useColorModeValue('gray.50', 'gray.800')}
@@ -22,6 +23,7 @@ function MainLayout() {
           <Sidebar />
 
           <Flex
+            role='main'
             direction='column'
             grow='1'
             height='100%'

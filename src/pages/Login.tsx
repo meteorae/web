@@ -41,10 +41,10 @@ function Login() {
   const loginStatus = useAppSelector((state) => state.auth.status);
 
   return (
-    <Container>
+    <Container role='main'>
       <Center>
         <Box p={4} width={'xs'}>
-          <Heading>Login</Heading>
+          <Heading as='h1'>{t('loginForm.login')}</Heading>
           <Formik
             initialValues={{ username: '', password: '' }}
             validationSchema={LoginSchema}
