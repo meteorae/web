@@ -20,10 +20,10 @@ const SidebarItem = ({ children, to, icon, ...rest }: NavItemProps) => {
   const active = useMatch({ path: resolved.pathname, end: true });
 
   let color = 'red.500';
-  const colorInactive = useColorModeValue('black', 'white');
+  const colorInactive = useColorModeValue('gray.900', 'white');
   let opacity = 1;
   let borderLeftColor = 'red.500';
-  let borderLeftColorActive = useColorModeValue('black', 'white');
+  let borderLeftColorActive = useColorModeValue('gray.600', 'white');
   if (!active) {
     opacity = 0.6;
     color = colorInactive;

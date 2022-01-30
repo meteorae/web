@@ -4,7 +4,8 @@ import map from 'lodash-es/map';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ItemCard, { Item } from './ItemCard';
 import { Navigation, Swiper as SwiperClass, Virtual } from 'swiper';
-import { RefObject, useState } from 'react';
+import { RefObject, useRef, useState } from 'react';
+import { useAppSelector } from '../app/hooks';
 
 interface ItemCarouselProps {
   items?: (Item | null)[] | null;
@@ -21,15 +22,20 @@ function ItemCarousel({
 }: ItemCarouselProps) {
   const [slidesPerView, setSlidesPerView] = useState(2);
   const [slidesPerGroup, setSlidesPerGroup] = useState(2);
+  const cardWidth = useAppSelector((state) => state.settings.cardSize);
+  const swiper = useRef<SwiperClass | null>(null);
 
   function onResize({ width }: { width: number }) {
     // Some weird maths to get similar alignment to the ItemGrid
-    setSlidesPerView((width - 16 * 2) / (160 + 13.5));
-    setSlidesPerGroup(Math.floor((width - 16 * 2) / (160 + 13)));
+    setSlidesPerView((width - 16 * 2) / (cardWidth + 13.5));
+    setSlidesPerGroup(Math.floor((width - 16 * 2) / (cardWidth + 13)));
+
+    swiper.current?.update();
   }
 
-  function onInit(swiper: SwiperClass) {
-    swiper.emit('resize');
+  function onInit(swiperInstance: SwiperClass) {
+    swiper.current = swiperInstance;
+    swiperInstance.emit('resize');
   }
 
   return (
@@ -39,7 +45,7 @@ function ItemCarousel({
       slidesPerGroup={slidesPerGroup}
       onResize={onResize}
       onInit={onInit}
-      centerInsufficientSlides
+      height={cardWidth + 52}
       style={{ overflow: 'visible' }}
       virtual={{
         enabled: true,
@@ -53,7 +59,7 @@ function ItemCarousel({
       onBeforeInit={onBeforeInit}>
       {map(items, (item, index) => (
         <SwiperSlide key={item?.id} virtualIndex={index}>
-          <Box w='160px'>
+          <Box w={cardWidth}>
             <ItemCard item={item} />
           </Box>
         </SwiperSlide>

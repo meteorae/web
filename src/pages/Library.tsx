@@ -10,6 +10,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
+import CardSizeSlider from '../components/CardSizeSlider';
 import ItemGrid from '../components/ItemGrid';
 import { GetItems, GetItemsVariables } from './__generated__/GetItems';
 
@@ -57,29 +58,39 @@ function Library() {
 
   return (
     <Stack h='100%' w='100%' direction='column'>
-      <Flex align='center' h='3rem' px={8}>
-        <Breadcrumb>
-          <BreadcrumbItem isCurrentPage>
-            <BreadcrumbLink href='#'>{data?.library?.name}</BreadcrumbLink>
-          </BreadcrumbItem>
-        </Breadcrumb>
+      <Flex
+        flexShrink='0'
+        justifyContent='space-between'
+        align='center'
+        h='3rem'
+        px={8}>
+        <Flex whiteSpace='nowrap' flexGrow='1' flexShrink='1' flexBasis='25%'>
+          <Breadcrumb>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink href='#'>{data?.library?.name}</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </Flex>
+        <Flex justifyContent='flex-end'>
+          <Box flexShrink='0'>
+            <CardSizeSlider />
+          </Box>
+        </Flex>
       </Flex>
-      <Box h='100%' w='100%'>
-        <ItemGrid
-          fetchMore={() => {
-            return fetchMore({
-              query: GET_ITEMS,
-              variables: {
-                libraryId: params.id,
-                offset: data?.items?.items?.length ?? 0,
-                limit: 50,
-              },
-            });
-          }}
-          data={data?.items?.items ?? []}
-          total={data?.items?.total ?? 0}
-        />
-      </Box>
+      <ItemGrid
+        fetchMore={() => {
+          return fetchMore({
+            query: GET_ITEMS,
+            variables: {
+              libraryId: params.id,
+              offset: data?.items?.items?.length ?? 0,
+              limit: 50,
+            },
+          });
+        }}
+        data={data?.items?.items ?? []}
+        total={data?.items?.total ?? 0}
+      />
     </Stack>
   );
 }

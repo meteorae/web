@@ -51,6 +51,9 @@ function Login() {
             onSubmit={async ({ username, password }, { setSubmitting }) => {
               try {
                 await dispatch(
+                  // TODO: Fix this type issue
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-expect-error
                   loginUser({
                     username,
                     password,
