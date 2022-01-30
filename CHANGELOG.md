@@ -1,3 +1,19 @@
+# [1.4.0](https://github.com/meteorae/web/compare/v1.3.0...v1.4.0) (2022-01-30)
+
+
+### Bug Fixes
+
+* **itemcard:** fix tests and unused deps ([0044e46](https://github.com/meteorae/web/commit/0044e461b728c868bdb95a6f8dcffe006973b077))
+* **itemcarousel:** improve feeling of resizing and sliding ([1a0d66e](https://github.com/meteorae/web/commit/1a0d66e7d175ca5399062cd9babc51fa946bb311))
+* **itemgrid:** add horizontal padding and set full height ([c587a07](https://github.com/meteorae/web/commit/c587a076df123d9133784116fd90d1c99e9a1358))
+* **sidebaritem:** add color transition ([d316e07](https://github.com/meteorae/web/commit/d316e073c0e3ac694f316971226931b374c5ee1a))
+
+
+### Features
+
+* **card:** add card overlay ([268f281](https://github.com/meteorae/web/commit/268f2813a7f20b46fb15f54df99e6de02b123e3f))
+* **components:** add card carousel and recently added sections ([7c372b4](https://github.com/meteorae/web/commit/7c372b42e15868ba3ad312d670cc8c000949cf1c))
+
 # [1.3.0](https://github.com/meteorae/web/compare/v1.2.0...v1.3.0) (2022-01-28)
 
 
