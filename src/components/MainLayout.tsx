@@ -3,6 +3,7 @@ import { Spinner, useColorModeValue } from '@chakra-ui/react';
 import { Fragment, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
+import ItemDetails from '../pages/ItemDetails';
 import Library from '../pages/Library';
 import RequireAuth from './RequireAuth';
 import Sidebar from './Sidebar';
@@ -44,6 +45,14 @@ function MainLayout() {
                   element={
                     <RequireAuth redirectTo='/login'>
                       <Library />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path='/item/:id'
+                  element={
+                    <RequireAuth redirectTo='/login'>
+                      <ItemDetails />
                     </RequireAuth>
                   }
                 />

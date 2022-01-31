@@ -42,6 +42,11 @@ const theme = extendTheme({
       500: '#DB1C2D',
     },
   },
+  fonts: {
+    body: 'Lato, system-ui, sans-serif',
+    heading: 'Vollkorn, serif',
+    mono: 'Menlo, monospace',
+  },
 });
 
 export default theme;

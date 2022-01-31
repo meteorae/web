@@ -9,7 +9,7 @@ import {
   Spinner,
   Stack,
 } from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import CardSizeSlider from '../components/CardSizeSlider';
 import ItemGrid from '../components/ItemGrid';
 import { GetItems, GetItemsVariables } from './__generated__/GetItems';
@@ -46,6 +46,10 @@ function Library() {
   >(GET_ITEMS, {
     variables: { libraryId: params.id || '0', offset: 0, limit: 50 },
   });
+
+  if (!params.id) {
+    <Navigate to='/' />;
+  }
 
   if (loading)
     return (

@@ -2,17 +2,12 @@ import {
   Box,
   IconButton,
   Image,
-  Link,
   PropsOf,
-  Text,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { mdiPlay } from '@mdi/js';
 import Icon from '@mdi/react';
-import { DateTime } from 'luxon';
 import { useState } from 'react';
-import { Link as ReactLink } from 'react-router-dom';
-import { useAppSelector } from '../app/hooks';
 
 export interface Item {
   __typename: 'Movie';
@@ -29,11 +24,9 @@ interface ItemCardOptions {
 
 interface ItemCardProps extends PropsOf<'div'>, ItemCardOptions {}
 
-function ItemCard({ item, ...props }: ItemCardProps) {
+function ItemPlayCard({ item, ...props }: ItemCardProps) {
   const [showOverlay, setShowOverlay] = useState(false);
   const overlayColor = useColorModeValue('gray.200', 'gray.800');
-  const overlayIconColor = useColorModeValue('black', 'white');
-  const cardWidth = useAppSelector((state) => state.settings.cardSize);
 
   return (
     <Box
@@ -43,19 +36,19 @@ function ItemCard({ item, ...props }: ItemCardProps) {
       alignItems='center'
       justifyContent='center'>
       <Box
-        w={cardWidth}
-        h={Math.round(cardWidth * 1.5)}
+        w='240px'
+        h={`${Math.round(240 * 1.5)}px`}
         position='relative'
         mb={4}
         onMouseEnter={() => setShowOverlay(true)}
         onMouseLeave={() => setShowOverlay(false)}>
-        <Box position='relative' w={cardWidth} h={Math.round(cardWidth * 1.5)}>
+        <Box position='relative' w='240px' h={`${Math.round(240 * 1.5)}px`}>
           <Image
             borderRadius='md'
-            w={cardWidth}
-            maxW={cardWidth}
-            h={Math.round(cardWidth * 1.5)}
-            maxH={Math.round(cardWidth * 1.5)}
+            w='240px'
+            maxW='240px'
+            h={`${Math.round(240 * 1.5)}px`}
+            maxH={`${Math.round(240 * 1.5)}px`}
             objectFit='cover'
             overflow='hidden'
             alt={item?.title ?? ''}
@@ -63,14 +56,11 @@ function ItemCard({ item, ...props }: ItemCardProps) {
             shadow='md'
           />
         </Box>
-        <Link
-          aria-label={item?.title ?? ''}
-          as={ReactLink}
-          to={`/item/${item?.id}`}
+        <Box
           borderRadius='md'
           display='block'
-          height={Math.round(cardWidth * 1.5)}
-          width={cardWidth}
+          height={`${Math.round(240 * 1.5)}px`}
+          width='240px'
           left='50%'
           transform='translate(-50%, -50%)'
           top='50%'
@@ -82,7 +72,7 @@ function ItemCard({ item, ...props }: ItemCardProps) {
         />
         {showOverlay && (
           <IconButton
-            colorScheme={overlayIconColor}
+            colorScheme='red'
             borderRadius='full'
             left='50%'
             transform='translate(-50%, -50%)'
@@ -92,14 +82,17 @@ function ItemCard({ item, ...props }: ItemCardProps) {
             borderWidth='3px'
             size='lg'
             aria-label={`Play ${item?.title}`}
+            _hover={{
+              backgroundColor: 'transparent',
+            }}
             icon={<Icon path={mdiPlay} size={1.5} />}
           />
         )}
         <Box
           borderRadius='md'
           display='block'
-          height={Math.round(cardWidth * 1.5)}
-          width={cardWidth}
+          height={Math.round(240 * 1.5)}
+          width='240px'
           left='50%'
           transform='translate(-50%, -50%)'
           top='50%'
@@ -117,35 +110,8 @@ function ItemCard({ item, ...props }: ItemCardProps) {
           />
         </Box>
       </Box>
-      <Box
-        display='flex'
-        flexDir='column'
-        alignItems='baseline'
-        w={cardWidth}
-        maxW={cardWidth}
-        overflow='hidden'>
-        <Link
-          as={ReactLink}
-          to={`/item/${item?.id}`}
-          fontSize='xs'
-          w={cardWidth}
-          maxW={cardWidth}
-          isTruncated>
-          {item?.title}
-        </Link>
-        <Text
-          fontSize='xs'
-          w={cardWidth}
-          maxW={cardWidth}
-          opacity='0.8'
-          userSelect='none'>
-          {item?.releaseDate
-            ? DateTime.fromSeconds(item.releaseDate).toFormat('yyyy')
-            : ''}
-        </Text>
-      </Box>
     </Box>
   );
 }
 
-export default ItemCard;
+export default ItemPlayCard;
