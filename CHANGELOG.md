@@ -1,3 +1,18 @@
+# [1.5.0](https://github.com/meteorae/web/compare/v1.4.0...v1.5.0) (2022-02-01)
+
+
+### Bug Fixes
+
+* **a11y:** fix several accessibility issues reported by axe ([a7d2e16](https://github.com/meteorae/web/commit/a7d2e16964504f6c96adb367cd4a67f57f288087))
+
+
+### Features
+
+* add early item details page ([9f2ee92](https://github.com/meteorae/web/commit/9f2ee92317d61df79e79b5995df20f268f45f665))
+* **hubsection:** add navigation buttons ([aab0ce7](https://github.com/meteorae/web/commit/aab0ce707ac410542be2ae4cb11e28cafb6a9461))
+* **itemcard:** make cards resizable ([bb04600](https://github.com/meteorae/web/commit/bb0460098855f622226fe6118f7a663bab612a47))
+* **theme:** adjust gray and red.500 colors ([4fac414](https://github.com/meteorae/web/commit/4fac414a7b1f7a164b03f22b8bc6b6961275d2e6))
+
 # [1.4.0](https://github.com/meteorae/web/compare/v1.3.0...v1.4.0) (2022-01-30)
 
 
