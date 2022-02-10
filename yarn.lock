@@ -17997,16 +17997,16 @@ react-refresh@^0.11.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
 
-react-relay@^13.0.1:
-  version "13.0.1"
-  resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-13.0.1.tgz#d7338d9427c352af905c7bb7d5973e70081292c1"
-  integrity sha512-Dv1vFP40+OFr1hKWs/NVlo2iTeapkqo6nUJUL1I9jytpNfg5XgjgXh+fQdfIMLM610+W+1Dxn6yZSEnnFpVQ0A==
+react-relay@^13.1.1:
+  version "13.1.1"
+  resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-13.1.1.tgz#de8befce89c43aa034e2836ba727a63b20f45586"
+  integrity sha512-Y/NJ9P4D2wegYNJ1ti85usWFl3d2zKYy/eiOU4RCVG92IAWzVemHHT5SfZh8KzaIa/7KhBEMUSrXcyetcv7VMA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     fbjs "^3.0.2"
     invariant "^2.2.4"
     nullthrows "^1.1.1"
-    relay-runtime "13.0.1"
+    relay-runtime "13.1.1"
 
 react-remove-scroll-bar@^2.1.0:
   version "2.2.0"
@@ -18485,10 +18485,10 @@ relateurl@^0.2.7:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
-relay-runtime@13.0.1:
-  version "13.0.1"
-  resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-13.0.1.tgz#7e59a07c3b4e8c58d04bc94f6f978822d4128ffb"
-  integrity sha512-n/+J8PFfLFPVUcz9OG/z2i+adnfk0INwlTkVTw0V6KJe9NI9plc5eRCJwzzwspT4pdCkis5Lcjzvzp4H+0zn8g==
+relay-runtime@13.1.1:
+  version "13.1.1"
+  resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-13.1.1.tgz#144bf0c147ec4099d722f76605b5dabd2854ffe1"
+  integrity sha512-JOYxhV/512dERkB999p2DHDTx2J9cU14tX4aHLNJPIC62QDHDkLu0qteY/33q/2RWU6JaoF8ScR4L4D+F3VnGQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
     fbjs "^3.0.2"
