@@ -8,12 +8,12 @@
 // ====================================================
 
 export interface GetItem_item {
-  __typename: "Movie";
+  __typename: 'Movie';
   id: string;
   title: string;
-  releaseDate: number;
-  thumb: string;
-  summary: string;
+  releaseDate: string | null;
+  thumb: string | null;
+  summary: string | null;
 }
 
 export interface GetItem {

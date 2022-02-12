@@ -18,9 +18,9 @@ export interface Item {
   __typename: 'Movie';
   id?: string;
   title?: string;
-  releaseDate?: number;
-  thumb?: string;
-  art?: string;
+  releaseDate?: string | null;
+  thumb?: string | null;
+  art?: string | null;
 }
 
 interface ItemCardOptions {
@@ -140,7 +140,7 @@ function ItemCard({ item, ...props }: ItemCardProps) {
           opacity='0.8'
           userSelect='none'>
           {item?.releaseDate
-            ? DateTime.fromSeconds(item.releaseDate).toFormat('yyyy')
+            ? DateTime.fromISO(item.releaseDate).toFormat('yyyy')
             : ''}
         </Text>
       </Box>

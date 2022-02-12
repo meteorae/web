@@ -8,15 +8,7 @@ import {
 import { mdiPlay } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useState } from 'react';
-
-export interface Item {
-  __typename: 'Movie';
-  id?: string;
-  title?: string;
-  releaseDate?: number;
-  thumb?: string;
-  art?: string;
-}
+import { Item } from './ItemCard';
 
 interface ItemCardOptions {
   item?: Item | null;

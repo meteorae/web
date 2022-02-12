@@ -1,5 +1,5 @@
 import { GetLibraries_libraries_libraries } from '../components/__generated__/GetLibraries';
-import { mdiHelp, mdiMovie } from '@mdi/js';
+import { mdiHelp, mdiImage, mdiMovie } from '@mdi/js';
 
 export function getIconFromLibrary(
   library: GetLibraries_libraries_libraries | null,
@@ -7,6 +7,8 @@ export function getIconFromLibrary(
   switch (library?.type) {
     case 'movie':
       return mdiMovie;
+    case 'image':
+      return mdiImage;
     default:
       return mdiHelp;
   }

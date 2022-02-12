@@ -8,22 +8,22 @@
 // ====================================================
 
 export interface GetLatest_latest_library {
-  __typename: "Library";
+  __typename: 'Library';
   id: string;
   name: string;
   type: string;
 }
 
 export interface GetLatest_latest_items {
-  __typename: "Movie";
+  __typename: 'Movie';
   id: string;
   title: string;
-  releaseDate: number;
-  thumb: string;
+  releaseDate: string | null;
+  thumb: string | null;
 }
 
 export interface GetLatest_latest {
-  __typename: "LatestResult";
+  __typename: 'LatestResult';
   library: GetLatest_latest_library;
   items: (GetLatest_latest_items | null)[] | null;
 }

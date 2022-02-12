@@ -8,22 +8,22 @@
 // ====================================================
 
 export interface GetItems_items_items {
-  __typename: "Movie";
+  __typename: 'Movie';
   id: string;
   title: string;
-  releaseDate: number;
-  thumb: string;
-  art: string;
+  releaseDate: string | null;
+  thumb: string | null;
+  art: string | null;
 }
 
 export interface GetItems_items {
-  __typename: "ItemsResult";
+  __typename: 'ItemsResult';
   items: (GetItems_items_items | null)[] | null;
   total: number | null;
 }
 
 export interface GetItems_library {
-  __typename: "Library";
+  __typename: 'Library';
   id: string;
   name: string;
 }

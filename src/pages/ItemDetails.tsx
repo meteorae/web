@@ -87,9 +87,7 @@ function ItemDetails() {
               </Heading>
               <Text opacity='0.8' userSelect='none' mt={0} mb={4}>
                 {data?.item?.releaseDate
-                  ? DateTime.fromSeconds(data?.item.releaseDate).toFormat(
-                      'yyyy',
-                    )
+                  ? DateTime.fromISO(data?.item.releaseDate).toFormat('yyyy')
                   : ''}
               </Text>
               <Stack direction='row' spacing={2} mb={3} alignItems='center'>
