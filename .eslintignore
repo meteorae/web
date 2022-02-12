@@ -2,3 +2,4 @@
 .eslintrc.js
 apollo.config.js
 commitlint.config.js
+*.md
