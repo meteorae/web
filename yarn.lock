@@ -4268,17 +4268,17 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/cli@^6.4.17":
-  version "6.4.17"
-  resolved "https://registry.yarnpkg.com/@storybook/cli/-/cli-6.4.17.tgz#c7c2f051f7e023b035c32e0b29099ac38f4859e0"
-  integrity sha512-rzI3qI97onB01S1vVIgskSXuXMCAaCc5vJ7W0z9iKrDlk3AUzTinwdfIKlocMYjTT6m9gknjVUgqWN2aYm2Xew==
+"@storybook/cli@^6.4.19":
+  version "6.4.19"
+  resolved "https://registry.yarnpkg.com/@storybook/cli/-/cli-6.4.19.tgz#393091415762280800b7dcc7c533ab2633641a9a"
+  integrity sha512-4UStCbSI9x4RChHsSAGuzBr/hinmijQMQEuUuVVN7xfhaQC4dDTyPCki8fJ4aBBzjYwoHFHz8lQGAnGLpVSpYQ==
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/preset-env" "^7.12.11"
-    "@storybook/codemod" "6.4.17"
-    "@storybook/core-common" "6.4.17"
-    "@storybook/csf-tools" "6.4.17"
-    "@storybook/node-logger" "6.4.17"
+    "@storybook/codemod" "6.4.19"
+    "@storybook/core-common" "6.4.19"
+    "@storybook/csf-tools" "6.4.19"
+    "@storybook/node-logger" "6.4.19"
     "@storybook/semver" "^7.3.2"
     boxen "^5.1.2"
     chalk "^4.1.0"
@@ -4438,16 +4438,16 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/codemod@6.4.17":
-  version "6.4.17"
-  resolved "https://registry.yarnpkg.com/@storybook/codemod/-/codemod-6.4.17.tgz#a326c13c6dc91b8cbdb182972584d442bdec8937"
-  integrity sha512-o3IHwBn6bCpel28fU/bLIIbXPkOs0W3KDu21hrfqTCCUN4dG9LEc/+W1GI69dUfldrknl8pIlzj5aM+em1fnsw==
+"@storybook/codemod@6.4.19":
+  version "6.4.19"
+  resolved "https://registry.yarnpkg.com/@storybook/codemod/-/codemod-6.4.19.tgz#f85f3c0e33b8c37533bc230c85bb53f944e3eaba"
+  integrity sha512-av7ZuA8TR63iueGRO31Dxk9TWcXVNKHRm0VoiHfzhuC0kO2jHfkxQrT2KwR9QsmEfFbsAn1NHNNlCP0QK3VbqA==
   dependencies:
     "@babel/types" "^7.12.11"
     "@mdx-js/mdx" "^1.6.22"
     "@storybook/csf" "0.0.2--canary.87bc651.0"
-    "@storybook/csf-tools" "6.4.17"
-    "@storybook/node-logger" "6.4.17"
+    "@storybook/csf-tools" "6.4.19"
+    "@storybook/node-logger" "6.4.19"
     core-js "^3.8.2"
     cross-spawn "^7.0.3"
     globby "^11.0.2"
@@ -5019,29 +5019,6 @@
   version "6.4.14"
   resolved "https://registry.yarnpkg.com/@storybook/csf-tools/-/csf-tools-6.4.14.tgz#c5112e17f07dae4c7b922aefd45dccbbc9e49803"
   integrity sha512-mRFsIhzFA2JBeUqdvl6+WM6HmHXaWGLbCgalzGqX65i1pSvhmC3jHh0OTTypMj9XneWH6/cHQh7LvivYbjJ8Cg==
-  dependencies:
-    "@babel/core" "^7.12.10"
-    "@babel/generator" "^7.12.11"
-    "@babel/parser" "^7.12.11"
-    "@babel/plugin-transform-react-jsx" "^7.12.12"
-    "@babel/preset-env" "^7.12.11"
-    "@babel/traverse" "^7.12.11"
-    "@babel/types" "^7.12.11"
-    "@mdx-js/mdx" "^1.6.22"
-    "@storybook/csf" "0.0.2--canary.87bc651.0"
-    core-js "^3.8.2"
-    fs-extra "^9.0.1"
-    global "^4.4.0"
-    js-string-escape "^1.0.1"
-    lodash "^4.17.21"
-    prettier ">=2.2.1 <=2.3.0"
-    regenerator-runtime "^0.13.7"
-    ts-dedent "^2.0.0"
-
-"@storybook/csf-tools@6.4.17":
-  version "6.4.17"
-  resolved "https://registry.yarnpkg.com/@storybook/csf-tools/-/csf-tools-6.4.17.tgz#e7d2b9de95317d706657c294d7beee1d7b307ec4"
-  integrity sha512-GnaO1dX4wTvMKBthbbHLHcrDTXwZ7PooZmT1fTCeokzaobZzyv1cUtF1hlPQa3zA75kRE5AznJ0jmBVhHe0/9Q==
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/generator" "^7.12.11"
