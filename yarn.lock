@@ -6546,11 +6546,6 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@types/zen-observable@0.8.3":
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.3.tgz#781d360c282436494b32fe7d9f7f8e64b3118aa3"
-  integrity sha512-fbF6oTd4sGGy0xjHPKAt+eS2CrxJ3+6gQ3FGcBoIJR2TLAyCkCyI8JqZNy+FeON0AhVgNJoUumVoZQjBFUqHkw==
-
 "@typescript-eslint/eslint-plugin@^5.5.0":
   version "5.10.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.10.1.tgz#870195d0f2146b36d11fc71131b75aba52354c69"
@@ -7435,10 +7430,10 @@ apollo-link-http@^1.5.5:
     apollo-link-http-common "^0.2.16"
     tslib "^1.9.3"
 
-apollo-link-scalars@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/apollo-link-scalars/-/apollo-link-scalars-4.0.0.tgz#727b4474ffdd8f36bd0e0d4a0c211a9e9bb1b05b"
-  integrity sha512-gi5B7qJQq6924Hw/AIaZUZPpewxqW4QjSzMI5ExuYXmL8jtqprN+3200hlroyd0b/2jSbbgw8rEmms3Bjwe6Zw==
+apollo-link-scalars@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/apollo-link-scalars/-/apollo-link-scalars-4.0.1.tgz#ffb6cc5e7d58aac819067137c53515230ad83a81"
+  integrity sha512-Pqj4X6K5+Cx34dEDxAOKMWvhhtMfxiqr0q6+GNBvIhT+cDCUQp7uF+yh/5ydbSZ23l2d9H40xp+TkKapGjgkmg==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.every "^4.6.0"
@@ -22253,15 +22248,7 @@ zen-observable-ts@^0.8.21:
     tslib "^1.9.3"
     zen-observable "^0.8.0"
 
-zen-observable-ts@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-1.1.0.tgz#2d1aa9d79b87058e9b75698b92791c1838551f83"
-  integrity sha512-1h4zlLSqI2cRLPJUHJFL8bCWHhkpuXkF+dbGkRaWjgDIG26DmzyshUMrdV/rL3UnR+mhaX4fRq8LPouq0MYYIA==
-  dependencies:
-    "@types/zen-observable" "0.8.3"
-    zen-observable "0.8.15"
-
-zen-observable-ts@^1.2.0:
+zen-observable-ts@^1.0.0, zen-observable-ts@^1.2.0:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-1.2.3.tgz#c2f5ccebe812faf0cfcde547e6004f65b1a6d769"
   integrity sha512-hc/TGiPkAWpByykMwDcem3SdUgA4We+0Qb36bItSuJC9xD0XVBZoFHYoadAomDSNf64CG8Ydj0Qb8Od8BUWz5g==
