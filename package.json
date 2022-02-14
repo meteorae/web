@@ -96,7 +96,7 @@
     "@storybook/manager-webpack5": "^6.4.19",
     "@storybook/node-logger": "^6.4.15",
     "@storybook/preset-create-react-app": "^4.0.1",
-    "@storybook/react": "^6.4.12",
+    "@storybook/react": "^6.4.19",
     "@types/jest-axe": "^3.5.3",
     "@whitespace/storybook-addon-html": "^5.0.0",
     "apollo": "^2.33.9",
