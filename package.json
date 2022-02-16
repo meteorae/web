@@ -30,7 +30,7 @@
     "@types/react-window": "^1.8.5",
     "apollo-link-scalars": "^4.0.1",
     "formik": "^2.2.9",
-    "framer-motion": "^5",
+    "framer-motion": "^6",
     "graphql-scalars": "^1.14.1",
     "i18next": "^21.6.11",
     "i18next-browser-languagedetector": "^6.1.3",
