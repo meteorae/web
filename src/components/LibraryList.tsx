@@ -1,21 +1,10 @@
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import map from 'lodash-es/map';
 import React from 'react';
+import GET_LIBRARIES from '../graphql/GetLibraries.gql';
 import { getIconFromLibrary } from '../utils/icons';
-import SidebarItem from './SidebarItem';
-import { GetLibraries } from './__generated__/GetLibraries';
-
-export const GET_LIBRARIES = gql`
-  query GetLibraries {
-    libraries {
-      libraries {
-        id
-        name
-        type
-      }
-    }
-  }
-`;
+import SidebarItem from '@/components/SidebarItem';
+import { GetLibraries } from '@/components/__generated__/GetLibraries';
 
 function LibraryList() {
   const { data } = useQuery<GetLibraries, undefined>(GET_LIBRARIES);

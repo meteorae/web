@@ -25,23 +25,38 @@ module.exports = {
     'plugin:eslint-comments/recommended',
     'plugin:prettier/recommended',
   ],
-  plugins: ['graphql'],
   settings: {
     react: {
       version: 'detect',
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: './tsconfig.json',
+      },
     },
   },
   ignorePatterns: ['**/__generated__/**'],
   rules: {
     'no-restricted-globals': ['error'].concat(restrictedGlobals),
-    'graphql/template-strings': [
-      'error',
-      {
-        env: 'apollo',
-        validators: 'all',
-        schemaJson: require('./src/schema.json'),
-      },
-    ],
     'jest/consistent-test-it': ['error'],
+    // TODO: Fix this
+    'import/no-unresolved': 'off',
   },
+  overrides: [
+    {
+      files: ['*.graphql'],
+      parser: '@graphql-eslint/eslint-plugin',
+      plugins: ['@graphql-eslint'],
+      rules: {
+        '@graphql-eslint/known-type-names': 'error',
+      },
+      parserOptions: {
+        schema: './src/schema.json',
+      },
+    },
+  ],
 };

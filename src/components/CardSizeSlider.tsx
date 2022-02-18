@@ -6,8 +6,8 @@ import {
   SliderTrack,
 } from '@chakra-ui/react';
 import throttle from 'lodash/throttle';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { setCardSize } from '../features/settings/settingsSlice';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { setCardSize } from '@/features/settings/settingsSlice';
 
 function CardSizeSlider() {
   const dispatch = useAppDispatch();

@@ -12,9 +12,9 @@ import {
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { APIRequestStatus } from '../types/store';
-import { loginUser } from '../features/auth/authSlice';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { APIRequestStatus } from '@/types/store';
+import { loginUser } from '@/features/auth/authSlice';
 import { useLocation } from 'react-router-dom';
 import { push } from 'redux-first-history';
 import noop from 'lodash/noop';

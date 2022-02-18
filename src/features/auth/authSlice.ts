@@ -1,9 +1,14 @@
-import { gql } from '@apollo/client';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppDispatch, RootState } from '../../app/store';
-import apolloClient from '../../app/apolloClient';
-import { APIRequestError, APIRequestStatus } from '../../types/store';
-import { Login, LoginVariables, Login_login_user } from './__generated__/Login';
+
+import apolloClient from '@/app/apolloClient';
+import { AppDispatch, RootState } from '@/app/store';
+import LOGIN_MUTATION from '@/graphql/Login.gql';
+import { APIRequestError, APIRequestStatus } from '@/types/store';
+import {
+  Login,
+  Login_login_user,
+  LoginVariables,
+} from '@/features/auth/__generated__/Login';
 
 interface AuthState {
   user: Login_login_user | null;
@@ -16,18 +21,6 @@ const initialState: AuthState = {
   status: APIRequestStatus.Idle,
   error: null,
 };
-
-const LOGIN_MUTATION = gql`
-  mutation Login($username: String!, $password: String!) {
-    login(username: $username, password: $password) {
-      token
-      user {
-        id
-        username
-      }
-    }
-  }
-`;
 
 export const loginUser = createAsyncThunk<
   Login,

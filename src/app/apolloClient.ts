@@ -8,7 +8,7 @@ import { setContext } from '@apollo/client/link/context';
 import { withScalars } from 'apollo-link-scalars';
 import { buildClientSchema, IntrospectionQuery } from 'graphql';
 import { DateTimeResolver } from 'graphql-scalars';
-import introspectionResult from '../schema.json';
+import introspectionResult from '@/schema.json';
 
 const schema = buildClientSchema(
   introspectionResult as unknown as IntrospectionQuery,

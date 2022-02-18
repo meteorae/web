@@ -11,8 +11,8 @@ import {
   Size,
 } from 'react-virtualized';
 import { useAppSelector } from '../app/hooks';
-import ItemCard from '../components/ItemCard';
-import { GetItems_items } from '../pages/__generated__/GetItems';
+import ItemCard from '@/components/ItemCard';
+import { GetItems_items } from '@/pages/__generated__/GetItems';
 
 type ItemGridProps = {
   fetchMore: () => Promise<unknown>;

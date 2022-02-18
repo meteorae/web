@@ -1,9 +1,9 @@
+import ItemCarousel from '@/components/ItemCarousel';
+import { GetLatest_latest } from '@/pages/__generated__/GetLatest';
 import { Box, Flex, Heading, IconButton } from '@chakra-ui/react';
 import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';
 import Icon from '@mdi/react';
 import React, { useRef } from 'react';
-import { GetLatest_latest } from '../pages/__generated__/GetLatest';
-import ItemCarousel from './ItemCarousel';
 
 export interface HubSectionProps {
   section: GetLatest_latest | null;

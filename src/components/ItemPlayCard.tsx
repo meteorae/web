@@ -8,7 +8,7 @@ import {
 import { mdiPlay } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useState } from 'react';
-import { Item } from './ItemCard';
+import { Item } from '@/components/ItemCard';
 
 interface ItemCardOptions {
   item?: Item | null;

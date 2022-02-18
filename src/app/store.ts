@@ -7,8 +7,8 @@ import {
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
 
-import authReducer from '../features/auth/authSlice';
-import settingsReducer from '../features/settings/settingsSlice';
+import authReducer from '@/features/auth/authSlice';
+import settingsReducer from '@/features/settings/settingsSlice';
 
 const { createReduxHistory, routerMiddleware, routerReducer } =
   createReduxHistoryContext({ history: createBrowserHistory() });

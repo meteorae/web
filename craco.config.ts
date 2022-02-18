@@ -2,12 +2,16 @@ import SentryWebpackPlugin from '@sentry/webpack-plugin';
 import { ESLINT_MODES, whenProd } from '@craco/craco';
 import type { CracoConfig } from '@craco/craco';
 import VERSION from './src/utils/version';
+import path from 'path';
 
 const cracoConfig: CracoConfig = {
   eslint: {
     mode: ESLINT_MODES.file,
   },
   webpack: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
     plugins: {
       add: [
         ...whenProd(

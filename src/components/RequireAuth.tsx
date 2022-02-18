@@ -1,5 +1,5 @@
 import { Navigate, NavigateProps } from 'react-router-dom';
-import { useAppSelector } from '../app/hooks';
+import { useAppSelector } from '@/app/hooks';
 
 interface ProtectedRouteProps {
   children: JSX.Element;

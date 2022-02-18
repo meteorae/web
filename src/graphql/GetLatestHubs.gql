@@ -1,0 +1,15 @@
+query GetLatestHubs($limit: Int) {
+  latest(limit: $limit) {
+    library {
+      id
+      name
+      type
+    }
+    items {
+      id
+      title
+      releaseDate
+      thumb
+    }
+  }
+}

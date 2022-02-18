@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import {
   Box,
   Breadcrumb,
@@ -23,22 +23,12 @@ import Icon from '@mdi/react';
 import { DateTime } from 'luxon';
 import Rating from 'react-rating';
 import { Navigate, useParams } from 'react-router';
-import CardSizeSlider from '../components/CardSizeSlider';
-import ItemPlayCard from '../components/ItemPlayCard';
-import styles from './ItemDetails.module.scss';
-import { GetItem, GetItemVariables } from './__generated__/GetItem';
 
-const GET_ITEM = gql`
-  query GetItem($id: ID!) {
-    item(id: $id) {
-      id
-      title
-      releaseDate
-      thumb
-      summary
-    }
-  }
-`;
+import CardSizeSlider from '@/components/CardSizeSlider';
+import ItemPlayCard from '@/components/ItemPlayCard';
+import GET_ITEM from '@/graphql/GetItem.gql';
+import { GetItem, GetItemVariables } from '@/pages/__generated__/GetItem';
+import styles from './ItemDetails.module.scss';
 
 function ItemDetails() {
   const params = useParams();

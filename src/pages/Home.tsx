@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import {
   Box,
   Breadcrumb,
@@ -8,30 +8,13 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import map from 'lodash/map';
-import CardSizeSlider from '../components/CardSizeSlider';
-import HubSection from '../components/HubSection';
-import { GetLatest, GetLatestVariables } from './__generated__/GetLatest';
-
-const GET_LATEST = gql`
-  query GetLatest($limit: Int) {
-    latest(limit: $limit) {
-      library {
-        id
-        name
-        type
-      }
-      items {
-        id
-        title
-        releaseDate
-        thumb
-      }
-    }
-  }
-`;
+import CardSizeSlider from '@/components/CardSizeSlider';
+import HubSection from '@/components/HubSection';
+import GET_LATEST_HUBS from '@/graphql/GetLatestHubs.gql';
+import { GetLatest, GetLatestVariables } from '@/pages/__generated__/GetLatest';
 
 function Home() {
-  const { data } = useQuery<GetLatest, GetLatestVariables>(GET_LATEST, {
+  const { data } = useQuery<GetLatest, GetLatestVariables>(GET_LATEST_HUBS, {
     variables: { limit: 24 },
   });
 

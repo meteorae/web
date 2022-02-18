@@ -1,7 +1,7 @@
 import { Flex, useColorModeValue } from '@chakra-ui/react';
 import { mdiHome } from '@mdi/js';
-import LibraryList from './LibraryList';
-import SidebarItem from './SidebarItem';
+import LibraryList from '@/components/LibraryList';
+import SidebarItem from '@/components/SidebarItem';
 
 function Sidebar() {
   return (

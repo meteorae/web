@@ -2,10 +2,10 @@ import { Box } from '@chakra-ui/react';
 import map from 'lodash-es/map';
 // eslint-disable-next-line import/no-unresolved
 import { Swiper, SwiperSlide } from 'swiper/react';
-import ItemCard, { Item } from './ItemCard';
+import ItemCard, { Item } from '@/components/ItemCard';
 import { Navigation, Swiper as SwiperClass, Virtual } from 'swiper';
 import { RefObject, useRef, useState } from 'react';
-import { useAppSelector } from '../app/hooks';
+import { useAppSelector } from '@/app/hooks';
 
 interface ItemCarouselProps {
   items?: (Item | null)[] | null;

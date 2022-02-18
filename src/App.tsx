@@ -2,8 +2,8 @@ import { Spinner, useColorModeValue, useTheme } from '@chakra-ui/react';
 import { Fragment, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 import { Route, Routes } from 'react-router-dom';
-import MainLayout from './components/MainLayout';
-import Login from './pages/Login';
+import MainLayout from '@/components/MainLayout';
+import Login from '@/pages/Login';
 
 // eslint-disable-next-line import/no-unresolved
 import 'swiper/css';

@@ -1,16 +1,17 @@
+import '@/app/i18n';
+
+import App from '@/App';
+import apolloClient from '@/app/apolloClient';
+import { history, store } from '@/app/store';
+import theme from '@/theme';
 import { ApolloProvider } from '@apollo/client';
+import { ChakraProvider } from '@chakra-ui/react';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import startsWith from 'lodash-es/startsWith';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './App';
-import './app/i18n';
-import { history, store } from './app/store';
 import { HistoryRouter } from 'redux-first-history/rr6';
-import apolloClient from './app/apolloClient';
-import theme from './theme';
-import { ChakraProvider } from '@chakra-ui/react';
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'development') {
   Sentry.init({

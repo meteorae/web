@@ -12,7 +12,7 @@ import Icon from '@mdi/react';
 import { DateTime } from 'luxon';
 import { useState } from 'react';
 import { Link as ReactLink } from 'react-router-dom';
-import { useAppSelector } from '../app/hooks';
+import { useAppSelector } from '@/app/hooks';
 
 export interface Item {
   __typename: 'Movie';

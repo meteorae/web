@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import {
   Box,
   Breadcrumb,
@@ -10,32 +10,11 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { Navigate, useParams } from 'react-router-dom';
-import CardSizeSlider from '../components/CardSizeSlider';
-import ItemGrid from '../components/ItemGrid';
-import { GetItems, GetItemsVariables } from './__generated__/GetItems';
 
-const GET_ITEMS = gql`
-  query GetItems($libraryId: ID!, $offset: Int, $limit: Int) {
-    items(libraryId: $libraryId, offset: $offset, limit: $limit) {
-      items {
-        __typename
-        ... on Movie {
-          id
-          title
-          releaseDate
-          thumb
-          art
-        }
-      }
-      total
-    }
-
-    library(id: $libraryId) {
-      id
-      name
-    }
-  }
-`;
+import CardSizeSlider from '@/components/CardSizeSlider';
+import ItemGrid from '@/components/ItemGrid';
+import GET_ITEMS from '@/graphql/GetItems.gql';
+import { GetItems, GetItemsVariables } from '@/pages/__generated__/GetItems';
 
 function Library() {
   const params = useParams();
