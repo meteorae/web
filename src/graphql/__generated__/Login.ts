@@ -8,13 +8,13 @@
 // ====================================================
 
 export interface Login_login_user {
-  __typename: "User";
+  __typename: 'User';
   id: string;
   username: string;
 }
 
 export interface Login_login {
-  __typename: "AuthPayload";
+  __typename: 'AuthPayload';
   token: string;
   user: Login_login_user;
 }

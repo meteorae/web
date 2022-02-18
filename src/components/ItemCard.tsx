@@ -13,18 +13,10 @@ import { DateTime } from 'luxon';
 import { useState } from 'react';
 import { Link as ReactLink } from 'react-router-dom';
 import { useAppSelector } from '@/app/hooks';
-
-export interface Item {
-  __typename: 'Movie';
-  id?: string;
-  title?: string;
-  releaseDate?: string | null;
-  thumb?: string | null;
-  art?: string | null;
-}
-
+import { GetLatestHubs_latest_items } from '@/graphql/__generated__/GetLatestHubs';
+import { GetItems_items_items } from '@/graphql/__generated__/GetItems';
 interface ItemCardOptions {
-  item?: Item | null;
+  item?: GetLatestHubs_latest_items | GetItems_items_items | null;
 }
 
 interface ItemCardProps extends PropsOf<'div'>, ItemCardOptions {}
@@ -139,7 +131,7 @@ function ItemCard({ item, ...props }: ItemCardProps) {
           maxW={cardWidth}
           opacity='0.8'
           userSelect='none'>
-          {item?.releaseDate
+          {item && 'releaseDate' in item && item?.releaseDate
             ? DateTime.fromISO(item.releaseDate).toFormat('yyyy')
             : ''}
         </Text>

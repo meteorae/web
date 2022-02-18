@@ -4,7 +4,7 @@ import React from 'react';
 import { loader } from 'graphql.macro';
 import { getIconFromLibrary } from '@/utils/icons';
 import SidebarItem from '@/components/SidebarItem';
-import { GetLibraries } from '@/components/__generated__/GetLibraries';
+import { GetLibraries } from '@/graphql/__generated__/GetLibraries';
 
 const GET_LIBRARIES = loader('../graphql/GetLibraries.gql');
 

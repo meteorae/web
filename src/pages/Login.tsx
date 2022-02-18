@@ -3,11 +3,13 @@ import {
   Button,
   Center,
   Container,
+  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Heading,
   Input,
+  Text,
 } from '@chakra-ui/react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -18,6 +20,8 @@ import { loginUser } from '@/features/auth/authSlice';
 import { useLocation } from 'react-router-dom';
 import { push } from 'redux-first-history';
 import noop from 'lodash/noop';
+
+import VERSION from '@/utils/version';
 
 const LoginSchema = Yup.object().shape({
   username: Yup.string().required('Required'),
@@ -41,10 +45,23 @@ function Login() {
   const loginStatus = useAppSelector((state) => state.auth.status);
 
   return (
-    <Container role='main'>
-      <Center>
-        <Box p={4} width={'xs'}>
-          <Heading as='h1'>{t('loginForm.login')}</Heading>
+    <Flex h='100%' direction='column'>
+      <Center flexGrow='1' w='100%'>
+        <Container
+          role='main'
+          p={8}
+          width={'xs'}
+          boxShadow='xl'
+          bgColor='gray.50'
+          borderRadius='lg'>
+          <Heading
+            as='h1'
+            fontFamily='sans-serif'
+            textAlign='center'
+            color='red.500'
+            mb={8}>
+            {t('loginForm.login')}
+          </Heading>
           <Formik
             initialValues={{ username: '', password: '' }}
             validationSchema={LoginSchema}
@@ -113,7 +130,7 @@ function Login() {
                     ) : null}
                   </FormControl>
                 </Box>
-                <Center>
+                <Center mt={8}>
                   <Button
                     type='submit'
                     colorScheme='red'
@@ -126,9 +143,18 @@ function Login() {
               </form>
             )}
           </Formik>
-        </Box>
+        </Container>
       </Center>
-    </Container>
+      <Text
+        flexGrow='0'
+        mb={4}
+        size='xs'
+        align='center'
+        color='gray.500'
+        userSelect='none'>
+        v{VERSION}
+      </Text>
+    </Flex>
   );
 }
 

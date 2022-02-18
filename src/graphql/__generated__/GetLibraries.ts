@@ -8,14 +8,14 @@
 // ====================================================
 
 export interface GetLibraries_libraries_libraries {
-  __typename: "Library";
+  __typename: 'Library';
   id: string;
   name: string;
   type: string;
 }
 
 export interface GetLibraries_libraries {
-  __typename: "LibrariesResult";
+  __typename: 'LibrariesResult';
   libraries: (GetLibraries_libraries_libraries | null)[] | null;
 }
 

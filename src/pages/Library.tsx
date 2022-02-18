@@ -14,7 +14,7 @@ import { loader } from 'graphql.macro';
 
 import CardSizeSlider from '@/components/CardSizeSlider';
 import ItemGrid from '@/components/ItemGrid';
-import { GetItems, GetItemsVariables } from '@/pages/__generated__/GetItems';
+import { GetItems, GetItemsVariables } from '@/graphql/__generated__/GetItems';
 
 const GET_ITEMS = loader('../graphql/GetItems.gql');
 

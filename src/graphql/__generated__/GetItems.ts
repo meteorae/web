@@ -7,14 +7,26 @@
 // GraphQL query operation: GetItems
 // ====================================================
 
-export interface GetItems_items_items {
-  __typename: 'Movie';
+export interface GetItems_items_items_Image {
+  __typename: 'Image' | 'ImageAlbum';
   id: string;
   title: string;
-  releaseDate: string | null;
   thumb: string | null;
   art: string | null;
 }
+
+export interface GetItems_items_items_Movie {
+  __typename: 'Movie';
+  id: string;
+  title: string;
+  thumb: string | null;
+  art: string | null;
+  releaseDate: string | null;
+}
+
+export type GetItems_items_items =
+  | GetItems_items_items_Image
+  | GetItems_items_items_Movie;
 
 export interface GetItems_items {
   __typename: 'ItemsResult';

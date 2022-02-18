@@ -1,14 +1,15 @@
+import { useAppSelector } from '@/app/hooks';
+import ItemCard from '@/components/ItemCard';
+import { GetLatestHubs_latest_items } from '@/graphql/__generated__/GetLatestHubs';
 import { Box } from '@chakra-ui/react';
 import map from 'lodash-es/map';
-// eslint-disable-next-line import/no-unresolved
-import { Swiper, SwiperSlide } from 'swiper/react';
-import ItemCard, { Item } from '@/components/ItemCard';
-import { Navigation, Swiper as SwiperClass, Virtual } from 'swiper';
 import { RefObject, useRef, useState } from 'react';
-import { useAppSelector } from '@/app/hooks';
+import { Navigation, Swiper as SwiperClass, Virtual } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+// eslint-disable-next-line import/no-unresolved
 interface ItemCarouselProps {
-  items?: (Item | null)[] | null;
+  items?: (GetLatestHubs_latest_items | null)[] | null;
   prevBtn: RefObject<HTMLButtonElement>;
   nextBtn: RefObject<HTMLButtonElement>;
   onBeforeInit: (swiper: SwiperClass) => void;

@@ -1,4 +1,4 @@
-import { GetLibraries_libraries_libraries } from '../components/__generated__/GetLibraries';
+import { GetLibraries_libraries_libraries } from '@/graphql/__generated__/GetLibraries';
 import { mdiHelp, mdiImage, mdiMovie } from '@mdi/js';
 
 export function getIconFromLibrary(

@@ -1,3 +1,5 @@
+import { GetItems_items_items } from '@/graphql/__generated__/GetItems';
+import { GetLatestHubs_latest_items } from '@/graphql/__generated__/GetLatestHubs';
 import {
   Box,
   IconButton,
@@ -8,10 +10,9 @@ import {
 import { mdiPlay } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useState } from 'react';
-import { Item } from '@/components/ItemCard';
 
 interface ItemCardOptions {
-  item?: Item | null;
+  item?: GetLatestHubs_latest_items | GetItems_items_items | null;
 }
 
 interface ItemCardProps extends PropsOf<'div'>, ItemCardOptions {}

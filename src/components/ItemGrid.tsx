@@ -12,7 +12,7 @@ import {
 } from 'react-virtualized';
 import { useAppSelector } from '../app/hooks';
 import ItemCard from '@/components/ItemCard';
-import { GetItems_items } from '@/pages/__generated__/GetItems';
+import { GetItems_items } from '@/graphql/__generated__/GetItems';
 
 type ItemGridProps = {
   fetchMore: () => Promise<unknown>;

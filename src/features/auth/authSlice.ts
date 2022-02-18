@@ -4,7 +4,7 @@ import {
   Login,
   Login_login_user,
   LoginVariables,
-} from '@/features/auth/__generated__/Login';
+} from '@/graphql/__generated__/Login';
 import { APIRequestError, APIRequestStatus } from '@/types/store';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loader } from 'graphql.macro';

@@ -27,7 +27,7 @@ import { loader } from 'graphql.macro';
 
 import CardSizeSlider from '@/components/CardSizeSlider';
 import ItemPlayCard from '@/components/ItemPlayCard';
-import { GetItem, GetItemVariables } from '@/pages/__generated__/GetItem';
+import { GetItem, GetItemVariables } from '@/graphql/__generated__/GetItem';
 import styles from './ItemDetails.module.scss';
 
 const GET_ITEM = loader('../graphql/GetItem.gql');
@@ -78,7 +78,9 @@ function ItemDetails() {
                 {data?.item?.title}
               </Heading>
               <Text opacity='0.8' userSelect='none' mt={0} mb={4}>
-                {data?.item?.releaseDate
+                {data?.item &&
+                'releaseDate' in data.item &&
+                data.item.releaseDate
                   ? DateTime.fromISO(data?.item.releaseDate).toFormat('yyyy')
                   : ''}
               </Text>

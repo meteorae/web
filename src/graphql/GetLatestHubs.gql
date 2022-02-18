@@ -8,8 +8,10 @@ query GetLatestHubs($limit: Int) {
     items {
       id
       title
-      releaseDate
       thumb
+      ... on Movie {
+        releaseDate
+      }
     }
   }
 }

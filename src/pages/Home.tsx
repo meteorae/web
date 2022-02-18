@@ -10,15 +10,21 @@ import {
 import map from 'lodash/map';
 import CardSizeSlider from '@/components/CardSizeSlider';
 import HubSection from '@/components/HubSection';
-import { GetLatest, GetLatestVariables } from '@/pages/__generated__/GetLatest';
+import {
+  GetLatestHubs,
+  GetLatestHubsVariables,
+} from '@/graphql/__generated__/GetLatestHubs';
 import { loader } from 'graphql.macro';
 
 const GET_LATEST_HUBS = loader('../graphql/GetLatestHubs.gql');
 
 function Home() {
-  const { data } = useQuery<GetLatest, GetLatestVariables>(GET_LATEST_HUBS, {
-    variables: { limit: 24 },
-  });
+  const { data } = useQuery<GetLatestHubs, GetLatestHubsVariables>(
+    GET_LATEST_HUBS,
+    {
+      variables: { limit: 24 },
+    },
+  );
 
   return (
     <Stack h='100%' w='100%' direction='column'>

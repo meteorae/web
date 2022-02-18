@@ -2,8 +2,10 @@ query GetItem($id: ID!) {
   item(id: $id) {
     id
     title
-    releaseDate
     thumb
     summary
+    ... on Movie {
+      releaseDate
+    }
   }
 }

@@ -2,12 +2,12 @@ query GetItems($libraryId: ID!, $offset: Int, $limit: Int) {
   items(libraryId: $libraryId, offset: $offset, limit: $limit) {
     items {
       __typename
+      id
+      title
+      thumb
+      art
       ... on Movie {
-        id
-        title
         releaseDate
-        thumb
-        art
       }
     }
     total
