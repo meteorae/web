@@ -1,19 +1,12 @@
 /// <reference lib="webworker" />
 
-// This service worker can be customized!
-// See https://developers.google.com/web/tools/workbox/modules
-// for the list of available Workbox modules, or add any other
-// code you'd like.
-// You can also remove this file if you'd prefer not to use a
-// service worker, and the Workbox build step will be skipped.
-
-import endsWith from 'lodash-es/endsWith';
 import startsWith from 'lodash-es/startsWith';
 import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate } from 'workbox-strategies';
+import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
+import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -54,19 +47,40 @@ registerRoute(
   createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html'),
 );
 
-// An example runtime caching route for requests that aren't handled by the
-// precache, in this case same-origin .png requests like those from in public/
+// Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
 registerRoute(
-  // Add in any other file extensions or routing criteria as needed.
-  ({ url }) =>
-    url.origin === self.location.origin && endsWith(url.pathname, '.png'),
-  // Customize this strategy as needed, e.g., by changing to CacheFirst.
+  ({ url }) => url.origin === 'https://fonts.googleapis.com',
   new StaleWhileRevalidate({
+    cacheName: 'google-fonts-stylesheets',
+  }),
+);
+
+// Cache the underlying font files with a cache-first strategy for 1 year.
+registerRoute(
+  ({ url }) => url.origin === 'https://fonts.gstatic.com',
+  new CacheFirst({
+    cacheName: 'google-fonts-webfonts',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxAgeSeconds: 60 * 60 * 24 * 365,
+        maxEntries: 30,
+      }),
+    ],
+  }),
+);
+
+registerRoute(
+  ({ request }) => request.destination === 'image',
+  new CacheFirst({
     cacheName: 'images',
     plugins: [
-      // Ensure that once this runtime cache reaches a maximum size the
-      // least-recently used images are removed.
-      new ExpirationPlugin({ maxEntries: 50 }),
+      new ExpirationPlugin({
+        maxEntries: 500,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+      }),
     ],
   }),
 );

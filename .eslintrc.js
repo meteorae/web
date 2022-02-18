@@ -43,6 +43,7 @@ module.exports = {
   rules: {
     'no-restricted-globals': ['error'].concat(restrictedGlobals),
     'jest/consistent-test-it': ['error'],
+    'import/no-named-as-default': 'off',
     // TODO: Fix this
     'import/no-unresolved': 'off',
   },

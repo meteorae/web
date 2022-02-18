@@ -9,9 +9,11 @@ import { ChakraProvider } from '@chakra-ui/react';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import startsWith from 'lodash-es/startsWith';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { HistoryRouter } from 'redux-first-history/rr6';
+import React from 'react';
+import { register } from './serviceWorkerRegistration';
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'development') {
   Sentry.init({
@@ -35,15 +37,20 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'development') {
   });
 }
 
-ReactDOM.render(
-  <Provider store={store}>
-    <HistoryRouter history={history}>
-      <ApolloProvider client={apolloClient}>
-        <ChakraProvider theme={theme}>
-          <App />
-        </ChakraProvider>
-      </ApolloProvider>
-    </HistoryRouter>
-  </Provider>,
+render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <HistoryRouter history={history}>
+        <ApolloProvider client={apolloClient}>
+          <ChakraProvider theme={theme}>
+            <App />
+          </ChakraProvider>
+        </ApolloProvider>
+      </HistoryRouter>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root'),
 );
+
+// Register the service worker for PWA
+register();
