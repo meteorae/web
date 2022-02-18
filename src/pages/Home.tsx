@@ -10,8 +10,10 @@ import {
 import map from 'lodash/map';
 import CardSizeSlider from '@/components/CardSizeSlider';
 import HubSection from '@/components/HubSection';
-import GET_LATEST_HUBS from '@/graphql/GetLatestHubs.gql';
 import { GetLatest, GetLatestVariables } from '@/pages/__generated__/GetLatest';
+import { loader } from 'graphql.macro';
+
+const GET_LATEST_HUBS = loader('../graphql/GetLatestHubs.gql');
 
 function Home() {
   const { data } = useQuery<GetLatest, GetLatestVariables>(GET_LATEST_HUBS, {

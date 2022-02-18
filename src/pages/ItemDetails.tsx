@@ -23,12 +23,14 @@ import Icon from '@mdi/react';
 import { DateTime } from 'luxon';
 import Rating from 'react-rating';
 import { Navigate, useParams } from 'react-router';
+import { loader } from 'graphql.macro';
 
 import CardSizeSlider from '@/components/CardSizeSlider';
 import ItemPlayCard from '@/components/ItemPlayCard';
-import GET_ITEM from '@/graphql/GetItem.gql';
 import { GetItem, GetItemVariables } from '@/pages/__generated__/GetItem';
 import styles from './ItemDetails.module.scss';
+
+const GET_ITEM = loader('../graphql/GetItem.gql');
 
 function ItemDetails() {
   const params = useParams();

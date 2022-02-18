@@ -1,14 +1,15 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 import apolloClient from '@/app/apolloClient';
 import { AppDispatch, RootState } from '@/app/store';
-import LOGIN_MUTATION from '@/graphql/Login.gql';
-import { APIRequestError, APIRequestStatus } from '@/types/store';
 import {
   Login,
   Login_login_user,
   LoginVariables,
 } from '@/features/auth/__generated__/Login';
+import { APIRequestError, APIRequestStatus } from '@/types/store';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { loader } from 'graphql.macro';
+
+const LOGIN_MUTATION = loader('../../graphql/Login.gql');
 
 interface AuthState {
   user: Login_login_user | null;

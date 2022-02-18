@@ -10,11 +10,13 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { Navigate, useParams } from 'react-router-dom';
+import { loader } from 'graphql.macro';
 
 import CardSizeSlider from '@/components/CardSizeSlider';
 import ItemGrid from '@/components/ItemGrid';
-import GET_ITEMS from '@/graphql/GetItems.gql';
 import { GetItems, GetItemsVariables } from '@/pages/__generated__/GetItems';
+
+const GET_ITEMS = loader('../graphql/GetItems.gql');
 
 function Library() {
   const params = useParams();
