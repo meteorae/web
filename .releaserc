@@ -4,6 +4,29 @@
   ],
   "plugins": [
     "@semantic-release/commit-analyzer",
+    [
+      "@google/semantic-release-replace-plugin",
+      {
+        "replacements": [
+          {
+            "files": [
+              "src/utils/version.ts"
+            ],
+            "from": "const version = '.*';",
+            "to": "const version = '${nextRelease.version}';",
+            "results": [
+              {
+                "file": "src/utils/version.ts",
+                "hasChanged": true,
+                "numMatches": 1,
+                "numReplacements": 1
+              }
+            ],
+            "countMatches": true
+          }
+        ]
+      }
+    ],
     "@semantic-release/release-notes-generator",
     [
       "@semantic-release/changelog",
@@ -11,11 +34,14 @@
         "changelogFile": "CHANGELOG.md"
       }
     ],
+    "@semantic-release/npm",
     [
       "@semantic-release/git",
       {
         "assets": [
-          "CHANGELOG.md"
+          "package.json",
+          "CHANGELOG.md",
+          "src/utils/version.ts"
         ]
       }
     ],
