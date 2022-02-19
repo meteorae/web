@@ -15,8 +15,13 @@ import { Link as ReactLink } from 'react-router-dom';
 import { useAppSelector } from '@/app/hooks';
 import { GetLatestHubs_latest_items } from '@/graphql/__generated__/GetLatestHubs';
 import { GetItems_items_items } from '@/graphql/__generated__/GetItems';
+import { GetChildren_children_items } from '@/graphql/__generated__/GetChildren';
 interface ItemCardOptions {
-  item?: GetLatestHubs_latest_items | GetItems_items_items | null;
+  item?:
+    | GetLatestHubs_latest_items
+    | GetItems_items_items
+    | GetChildren_children_items
+    | null;
 }
 
 interface ItemCardProps extends PropsOf<'div'>, ItemCardOptions {}

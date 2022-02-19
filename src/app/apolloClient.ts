@@ -10,6 +10,19 @@ import { buildClientSchema, IntrospectionQuery } from 'graphql';
 import { DateTimeResolver } from 'graphql-scalars';
 import introspectionResult from '@/schema.json';
 
+function mergeItemResults(existing: any, incoming: any, offset: number) {
+  const total = incoming?.total || 0;
+
+  const mergedItems = existing.items ? existing.items.slice(0) : [];
+  for (let i = 0; i < (incoming?.items?.length || 0); ++i) {
+    mergedItems[offset + i] = incoming?.items[i];
+  }
+  return {
+    items: mergedItems,
+    total,
+  };
+}
+
 const schema = buildClientSchema(
   introspectionResult as unknown as IntrospectionQuery,
 );
@@ -43,20 +56,19 @@ const apolloClient = new ApolloClient({
       Query: {
         fields: {
           items: {
-            keyArgs: false,
+            keyArgs: ['libraryId'],
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
             merge(existing = {}, incoming, { args: { offset = 0 } }) {
-              const total = incoming?.total || 0;
-
-              const mergedItems = existing.items ? existing.items.slice(0) : [];
-              for (let i = 0; i < (incoming?.items?.length || 0); ++i) {
-                mergedItems[offset + i] = incoming?.items[i];
-              }
-              return {
-                items: mergedItems,
-                total,
-              };
+              return mergeItemResults(existing, incoming, offset);
+            },
+          },
+          children: {
+            keyArgs: ['item'],
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            merge(existing = {}, incoming, { args: { offset = 0 } }) {
+              return mergeItemResults(existing, incoming, offset);
             },
           },
         },

@@ -12,7 +12,6 @@ export interface GetItems_items_items_Image {
   id: string;
   title: string;
   thumb: string | null;
-  art: string | null;
 }
 
 export interface GetItems_items_items_Movie {
@@ -20,7 +19,6 @@ export interface GetItems_items_items_Movie {
   id: string;
   title: string;
   thumb: string | null;
-  art: string | null;
   releaseDate: string | null;
 }
 

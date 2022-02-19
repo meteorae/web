@@ -5,7 +5,6 @@ query GetItems($libraryId: ID!, $offset: Int, $limit: Int) {
       id
       title
       thumb
-      art
       ... on Movie {
         releaseDate
       }

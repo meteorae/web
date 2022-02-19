@@ -1,0 +1,11 @@
+query GetChildren($item: ID!, $offset: Int, $limit: Int) {
+  children(item: $item, offset: $offset, limit: $limit) {
+    items {
+      __typename
+      id
+      title
+      thumb
+    }
+    total
+  }
+}

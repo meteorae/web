@@ -13,10 +13,11 @@ import {
 import { useAppSelector } from '../app/hooks';
 import ItemCard from '@/components/ItemCard';
 import { GetItems_items } from '@/graphql/__generated__/GetItems';
+import { GetChildren_children } from '@/graphql/__generated__/GetChildren';
 
 type ItemGridProps = {
   fetchMore: () => Promise<unknown>;
-  data?: GetItems_items['items'];
+  data?: GetItems_items['items'] | GetChildren_children['items'];
   total: number;
 };
 

@@ -42,7 +42,7 @@ function Library() {
   if (error) return <p>Error! {error.message}</p>;
 
   return (
-    <Stack h='100%' w='100%' direction='column'>
+    <Flex h='100%' w='100%' direction='column'>
       <Flex
         flexShrink='0'
         justifyContent='space-between'
@@ -76,7 +76,7 @@ function Library() {
         data={data?.items?.items ?? []}
         total={data?.items?.total ?? 0}
       />
-    </Stack>
+    </Flex>
   );
 }
 
