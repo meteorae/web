@@ -45,7 +45,7 @@ const SidebarItem = ({ children, to, icon, ...rest }: NavItemProps) => {
           transitionProperty='opacity color'
           transitionDuration='150ms'
           transitionTimingFunction='ease-in'
-          px='3'
+          px='2'
           py='1'
           color={color}
           opacity={opacity}

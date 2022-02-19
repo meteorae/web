@@ -1,27 +1,28 @@
-import { Box, Flex } from '@chakra-ui/layout';
-import { Spinner, useColorModeValue } from '@chakra-ui/react';
-import { Fragment, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import RequireAuth from '@/components/RequireAuth';
+import Sidebar from '@/components/Sidebar';
 import Home from '@/pages/Home';
 import ItemDetails from '@/pages/ItemDetails';
 import Library from '@/pages/Library';
-import RequireAuth from '@/components/RequireAuth';
-import Sidebar from '@/components/Sidebar';
+import { Flex } from '@chakra-ui/layout';
+import { Spinner } from '@chakra-ui/react';
+import { Fragment, Suspense, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import Navbar from './Navbar';
 
 function MainLayout() {
+  const [collapsed, setCollapsed] = useState(false);
+
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed);
+  };
+
   return (
     <Fragment>
-      <Box
-        role='banner'
-        m={2}
-        height='3rem'
-        bg={useColorModeValue('grayTransparent.50', 'grayTransparent.800')}
-        borderRadius='base'>
-        Header
-      </Box>
+      <Navbar toggleCollapsed={toggleCollapsed} />
       <Flex position='relative' h='100%' flexGrow='1'>
         <Flex direction='row' w='100%'>
-          <Sidebar />
+          <Sidebar collapsed={collapsed} />
 
           <Flex
             role='main'
