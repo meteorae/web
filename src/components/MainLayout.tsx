@@ -1,17 +1,18 @@
 import RequireAuth from '@/components/RequireAuth';
 import Sidebar from '@/components/Sidebar';
+import useLocalStorage from '@/hooks/useLocalStorage';
 import Home from '@/pages/Home';
 import ItemDetails from '@/pages/ItemDetails';
 import Library from '@/pages/Library';
 import { Flex } from '@chakra-ui/layout';
 import { Spinner } from '@chakra-ui/react';
-import { Fragment, Suspense, useState } from 'react';
+import { Fragment, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Navbar from './Navbar';
 
 function MainLayout() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useLocalStorage('sidebarCollapsed', false);
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
