@@ -39,14 +39,14 @@ jobs:
         run: yarn run semantic-release
       - name: Get version number
         run: |
-          echo "SENTRY_RELEASE={npm pkg get version}" >> $GITHUB_ENV
+          echo "SENTRY_RELEASE=$(npm pkg get version)" >> $GITHUB_ENV
       - name: Publish release to Sentry
         run: |
           curl -sL https://sentry.io/get-cli/ | bash
 
           sentry-cli releases new $SENTRY_RELEASE
-          sentry-cli releases set-commits --auto $SENTRY_RELEASE
+          sentry-cli releases set-commits --ignore-missing --auto $SENTRY_RELEASE
           sentry-cli releases files $SENTRY_RELEASE upload-sourcemaps --no-rewrite ./build/static/js/ --url-prefix "~/static/js"
           sentry-cli releases finalize $SENTRY_RELEASE
 
-          sentry-cli releases deploys $SENTRY_RELEASE new
+          sentry-cli releases deploys $SENTRY_RELEASE new --env production
