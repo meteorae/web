@@ -1,6 +1,6 @@
 {
   "name": "meteorae-react",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": true,
   "homepage": "./",
   "proxy": "http://localhost:42000",

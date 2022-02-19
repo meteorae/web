@@ -1,3 +1,9 @@
+# [1.7.0](https://github.com/meteorae/web/compare/v1.6.0...v1.7.0) (2022-02-19)
+
+### Features
+
+- make sidebar collapse persistent ([c947dbb](https://github.com/meteorae/web/commit/c947dbbc17a8dd89c95ed6f28ce65d7aaf6272c6))
+
 # [1.6.0](https://github.com/meteorae/web/compare/v1.5.1...v1.6.0) (2022-02-19)
 
 ### Bug Fixes
