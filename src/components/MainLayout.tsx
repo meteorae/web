@@ -15,7 +15,7 @@ function MainLayout() {
         role='banner'
         m={2}
         height='3rem'
-        bg={useColorModeValue('gray.50', 'gray.800')}
+        bg={useColorModeValue('grayTransparent.50', 'grayTransparent.800')}
         borderRadius='base'>
         Header
       </Box>

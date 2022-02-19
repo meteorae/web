@@ -10,6 +10,7 @@ import {
   Heading,
   Input,
   Text,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -52,7 +53,7 @@ function Login() {
           p={8}
           width={'xs'}
           boxShadow='xl'
-          bgColor='gray.50'
+          bgColor={useColorModeValue('gray.50', 'gray.800')}
           borderRadius='lg'>
           <Heading
             as='h1'

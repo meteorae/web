@@ -13,7 +13,7 @@ function Sidebar() {
       minW='16.25rem'
       ml={2}
       mb={2}
-      bg={useColorModeValue('gray.50', 'gray.800')}
+      bg={useColorModeValue('grayTransparent.50', 'grayTransparent.800')}
       borderRadius='base'
       height='calc(100% - 8px)'>
       <SidebarItem to='/' icon={mdiHome}>

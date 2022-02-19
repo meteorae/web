@@ -28,7 +28,7 @@ const SidebarItem = ({ children, to, icon, ...rest }: NavItemProps) => {
     opacity = 0.6;
     color = colorInactive;
     borderLeftColor = 'transparent';
-    borderLeftColorActive = 'white';
+    borderLeftColorActive = 'transparent';
   }
 
   return (
