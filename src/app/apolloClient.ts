@@ -10,6 +10,7 @@ import { buildClientSchema, IntrospectionQuery } from 'graphql';
 import { DateTimeResolver } from 'graphql-scalars';
 import introspectionResult from '@/schema.json';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mergeItemResults(existing: any, incoming: any, offset: number) {
   const total = incoming?.total || 0;
 

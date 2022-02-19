@@ -7,7 +7,6 @@ import {
   Center,
   Flex,
   Spinner,
-  Stack,
 } from '@chakra-ui/react';
 import { Navigate, useParams } from 'react-router-dom';
 import { loader } from 'graphql.macro';
