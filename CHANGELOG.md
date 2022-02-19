@@ -1,3 +1,17 @@
+# [1.6.0](https://github.com/meteorae/web/compare/v1.5.1...v1.6.0) (2022-02-19)
+
+### Bug Fixes
+
+- cleanup GraphQL imports ([7681ace](https://github.com/meteorae/web/commit/7681ace388ebd27ba604c8d9d0365888841f4a40))
+
+### Features
+
+- add details for image albums ([c4fd09d](https://github.com/meteorae/web/commit/c4fd09d611cc7c123406bb5e4e09843880ff310e))
+- improve login page design ([2f9c7da](https://github.com/meteorae/web/commit/2f9c7da91dc085f99da9b377a43e9e56815e6402))
+- **sw:** cache fonts and images with Workbox ([def38f2](https://github.com/meteorae/web/commit/def38f21d00534a79d2b11d0bd3bc5bc6c150a59))
+- **ui:** add custom scrollbar styles ([b8fd472](https://github.com/meteorae/web/commit/b8fd47276a5f1f26443c46286f1458ff5338bd23))
+- **ui:** add sidebar collapse toggle ([b7db214](https://github.com/meteorae/web/commit/b7db214912a0ab2421992dc8d260e49a296aaf65))
+
 ## [1.5.1](https://github.com/meteorae/web/compare/v1.5.0...v1.5.1) (2022-02-12)
 
 ### Bug Fixes
