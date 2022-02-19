@@ -39,7 +39,7 @@ jobs:
         run: yarn run semantic-release
       - name: Get version number
         run: |
-          echo "SENTRY_RELEASE={npm pkg get version | sed 's/"//g'}" >> $GITHUB_ENV
+          echo "SENTRY_RELEASE={npm pkg get version}" >> $GITHUB_ENV
       - name: Publish release to Sentry
         run: |
           curl -sL https://sentry.io/get-cli/ | bash
