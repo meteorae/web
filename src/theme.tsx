@@ -8,6 +8,25 @@ const theme = extendTheme({
   },
   styles: {
     global: (props: never) => ({
+      '*': {
+        scrollbarColor: `${mode(
+          'rgb(82, 157, 173)',
+          'rgb(191, 212, 217)',
+        )(props)} transparent`,
+      },
+      '*::-webkit-scrollbar': {
+        width: '14px',
+      },
+      '*::-webkit-scrollbar-thumb': {
+        backgroundClip: 'padding-box',
+        backgroundColor: mode('rgb(82, 157, 173)', 'rgb(191, 212, 217)')(props),
+        border: '3px solid transparent',
+        borderRadius: '8px',
+        minHeight: '50px',
+      },
+      '*::-webkit-scrollbar-track': {
+        background: 'initial',
+      },
       'html, body': {
         bg: mode('gray.100', 'gray.900')(props),
         width: '100%',
