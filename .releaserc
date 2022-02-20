@@ -55,6 +55,12 @@
           }
         ]
       }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "publishCmd": "sentry-cli releases new ${nextRelease.version} && sentry-cli releases set-commits --ignore-missing --auto ${nextRelease.version} && sentry-cli releases files ${nextRelease.version} upload-sourcemaps --no-rewrite ./build/static/js/ --url-prefix \"~/static/js\" && sentry-cli releases finalize ${nextRelease.version} && sentry-cli releases deploys ${nextRelease.version} new --env production"
+      }
     ]
   ]
 }

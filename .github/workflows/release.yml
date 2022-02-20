@@ -27,6 +27,9 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+      - name: Install Sentry
+        run: |
+          curl -sL https://sentry.io/get-cli/ | bash
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build
@@ -37,16 +40,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn run semantic-release
-      - name: Get version number
-        run: |
-          echo "SENTRY_RELEASE=$(npm pkg get version)" >> $GITHUB_ENV
-      - name: Publish release to Sentry
-        run: |
-          curl -sL https://sentry.io/get-cli/ | bash
-
-          sentry-cli releases new $SENTRY_RELEASE
-          sentry-cli releases set-commits --ignore-missing --auto $SENTRY_RELEASE
-          sentry-cli releases files $SENTRY_RELEASE upload-sourcemaps --no-rewrite ./build/static/js/ --url-prefix "~/static/js"
-          sentry-cli releases finalize $SENTRY_RELEASE
-
-          sentry-cli releases deploys $SENTRY_RELEASE new --env production
