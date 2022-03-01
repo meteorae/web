@@ -6,7 +6,7 @@
   "proxy": "http://localhost:42000",
   "dependencies": {
     "@apollo/client": "^3.5.9",
-    "@chakra-ui/react": "^1.8.3",
+    "@chakra-ui/react": "^1.8.6",
     "@craco/craco": "^7.0.0-alpha.3",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
