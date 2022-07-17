@@ -1,3 +1,11 @@
 {
-  "singleQuote": true
+  "tabWidth": 2,
+  "semi": true,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "jsxBracketSameLine": true,
+  "importOrder": ["^@meteorae/(.*)$", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

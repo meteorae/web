@@ -4,9 +4,10 @@
       "@nrwl/react/babel",
       {
         "runtime": "automatic",
+        "useBuiltIns": "usage",
         "importSource": "@emotion/react"
       }
     ]
   ],
-  "plugins": ["babel-plugin-graphql-tag", "@emotion/babel-plugin"]
+  "plugins": ["@emotion/babel-plugin", "inline-react-svg"]
 }

@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@meteorae/assets": ["libs/assets/src/index.ts"],
+      "@meteorae/feature-settings": ["libs/feature-settings/src/index.ts"],
+      "@meteorae/ui-react": ["libs/ui-react/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

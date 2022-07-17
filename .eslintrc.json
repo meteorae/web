@@ -23,13 +23,46 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
+      "extends": ["plugin:@nrwl/nx/typescript", "prettier"],
       "rules": {}
     },
     {
       "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nrwl/nx/javascript"],
+      "extends": ["plugin:@nrwl/nx/javascript", "prettier"],
       "rules": {}
+    },
+    {
+      "files": ["*.json"],
+      "extends": ["plugin:json/recommended"]
+    },
+    {
+      "files": ["*.spec.js", "*.spec.ts"],
+      "env": {
+        "jest/globals": true
+      },
+      "plugins": ["jest"],
+      "extends": [
+        "plugin:jest/recommended",
+        "plugin:jest/style",
+        "plugin:jest-formatting/strict",
+        "plugin:testing-library/react",
+        "prettier"
+      ],
+      "rules": {}
+    },
+    {
+      "files": [
+        "*.sotries.js",
+        "*.stories.jsx",
+        "*.stories.ts",
+        "*.stories.tsx"
+      ],
+      "extends": [
+        "plugin:storybook/recommended",
+        "plugin:storybook/csf-strict",
+        "plugin:storybook/addon-interactions",
+        "prettier"
+      ]
     }
   ]
 }
