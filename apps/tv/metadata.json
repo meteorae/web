@@ -1,0 +1,6 @@
+{
+  "name": "Meteorae",
+  "identifier": "tv.meteorae.app.TV",
+  "version": "1.0.0",
+  "icon": "./static/icon.png"
+}
