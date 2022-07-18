@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery, useSubscription } from '@apollo/client';
 import {
   Box,
   Breadcrumb,
@@ -6,6 +6,7 @@ import {
   BreadcrumbLink,
   Flex,
   Stack,
+  useToast,
 } from '@chakra-ui/react';
 import debounce from 'lodash-es/debounce';
 import map from 'lodash-es/map';
@@ -15,46 +16,76 @@ import { CardSizeSlider, HubSection } from '@meteorae/ui-react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import MainLayout from '../../components/main-layout';
 import { setCardSize } from '../../features/settings/settingsSlice';
-
-const GET_LATEST_HUBS = gql`
-  query GetLatest {
-    latest {
-      library {
-        id
-        name
-      }
-      items {
-        id
-        ... on Movie {
-          title
-          thumb
-          releaseDate
-        }
-        ... on MusicAlbum {
-          title
-          thumb
-          artist {
-            id
-            name
-          }
-        }
-        ... on PhotoAlbum {
-          title
-          thumb
-          releaseDate
-        }
-      }
-    }
-  }
-`;
+import {
+  GetLatestDocument,
+  GetLatestQuery,
+  OnItemUpdatedDocument,
+  OnItemUpdatedSubscription,
+  OnLatestHubAddedDocument,
+  OnLatestHubAddedSubscription,
+} from '../../generated';
 
 function Dashboard() {
-  const { data } = useQuery(GET_LATEST_HUBS, {
-    variables: { limit: 24 },
+  const toast = useToast();
+
+  const { subscribeToMore, data } = useQuery<GetLatestQuery>(
+    GetLatestDocument,
+    {
+      variables: { limit: 24 },
+    },
+  );
+
+  useSubscription<OnItemUpdatedSubscription>(OnItemUpdatedDocument, {
+    onSubscriptionData: ({ subscriptionData }) => {
+      toast({
+        title: 'Item updated',
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        description: `${subscriptionData?.data?.onItemUpdated.title}`,
+        status: 'info',
+        duration: 2500,
+        isClosable: true,
+      });
+    },
   });
 
   const dispatch = useAppDispatch();
   const cardWidth = useAppSelector((state) => state.settings.cardSize);
+
+  subscribeToMore<OnLatestHubAddedSubscription>({
+    document: OnLatestHubAddedDocument,
+    updateQuery: (prev, { subscriptionData }) => {
+      if (!subscriptionData.data) return prev;
+
+      let latestHubs = prev.latest ?? [];
+
+      for (const newLatestHub of subscriptionData.data.onLatestItemAdded ??
+        []) {
+        const newHub = latestHubs.find(
+          (hub) => hub?.library.id === newLatestHub?.library.id,
+        );
+
+        if (newHub) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          latestHubs = latestHubs.map((hub) => {
+            if (hub?.library.id === newLatestHub?.library.id) {
+              return newLatestHub;
+            }
+            return hub;
+          });
+        } else {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          latestHubs = [...latestHubs, newLatestHub];
+        }
+      }
+
+      return Object.assign({}, prev, {
+        latest: latestHubs,
+      });
+    },
+  });
 
   return (
     <MainLayout>

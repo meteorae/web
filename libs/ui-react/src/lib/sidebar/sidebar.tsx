@@ -7,22 +7,29 @@ import {
   mdiMusic,
   mdiTelevision,
 } from '@mdi/js';
+import { useEffect } from 'react';
 
 import { SidebarItem } from '@meteorae/ui-react';
 
-// TODO: Replace with GraphQL type.
-interface Library {
-  id: string;
-  name: string;
-  type: string;
-}
-
 interface SidebarProps {
   collapsed: boolean;
-  libraries: Library[];
+  libraries: Array<{
+    __typename?: 'Library';
+    id: string;
+    name: string;
+    type: string;
+  } | null> | null;
+  subscribeToNewLibraries: () => void;
 }
 
-export function getIconFromLibrary(library: Library | null) {
+export function getIconFromLibrary(
+  library: {
+    __typename?: 'Library';
+    id: string;
+    name: string;
+    type: string;
+  } | null,
+) {
   switch (library?.type) {
     case 'movie':
       return mdiMovie;
@@ -37,8 +44,16 @@ export function getIconFromLibrary(library: Library | null) {
   }
 }
 
-function Sidebar({ collapsed, libraries }: SidebarProps) {
+function Sidebar({
+  collapsed,
+  libraries,
+  subscribeToNewLibraries,
+}: SidebarProps) {
   const backgroundColor = useColorModeValue('gray.200', 'gray.800');
+
+  useEffect(() => {
+    subscribeToNewLibraries();
+  }, [subscribeToNewLibraries]);
 
   return (
     <Flex
@@ -56,7 +71,7 @@ function Sidebar({ collapsed, libraries }: SidebarProps) {
       <SidebarItem to='/' icon={mdiHome}>
         Home
       </SidebarItem>
-      {libraries.map((library) => (
+      {(libraries ?? []).map((library) => (
         <SidebarItem
           to={`/library/${library?.id}`}
           icon={getIconFromLibrary(library)}

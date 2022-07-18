@@ -37,8 +37,22 @@ type Library {
 type Movie implements Item {
   id: ID!
   title: String!
+  sortTitle: String!
   releaseDate: String
   summary: String
+  thumb: String
+  art: String
+  createdAt: Time!
+  updatedAt: Time!
+}
+
+"""Item information about a movie."""
+type MusicAlbum implements Item {
+  id: ID!
+  title: String!
+  sortTitle: String!
+  releaseDate: String
+  artist: Person
   thumb: String
   art: String
   createdAt: Time!
@@ -59,6 +73,31 @@ type Mutation {
   location. This will trigger a scan for all locations provided.
   """
   addLibrary(type: String!, name: String!, language: String!, locations: [String!]!): Library!
+}
+
+type Person implements Item {
+  id: ID!
+  name: String!
+  sortName: String!
+  type: String!
+  birthDate: String
+  deathDate: String
+  summary: String
+  thumb: String
+  art: String
+  createdAt: Time!
+  updatedAt: Time!
+}
+
+type PhotoAlbum implements Item {
+  id: ID!
+  title: String!
+  sortTitle: String!
+  releaseDate: String
+  thumb: String
+  art: String
+  createdAt: Time!
+  updatedAt: Time!
 }
 
 type Query {
@@ -96,6 +135,10 @@ type ServerInfo {
 
 type Subscription {
   newUpdateAvailable: UpdateInfo
+  onLatestItemAdded: [LatestResult]
+  onItemAdded: Item!
+  onItemUpdated: Item!
+  onLibraryAdded: Library!
 }
 
 scalar Time

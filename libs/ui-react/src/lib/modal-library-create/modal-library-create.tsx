@@ -96,7 +96,7 @@ export function ModalLibraryCreate({
             title: 'Library Creation Failed.',
             description: error.message,
             status: 'error',
-            duration: 9000,
+            duration: 5000,
             isClosable: true,
           });
         },
@@ -105,7 +105,7 @@ export function ModalLibraryCreate({
             title: 'Library Created.',
             description: `The library ${data.addLibrary.name} has been created.`,
             status: 'success',
-            duration: 9000,
+            duration: 5000,
             isClosable: true,
           });
           onClose();
@@ -195,7 +195,6 @@ export function ModalLibraryCreate({
                     <Select
                       required
                       placeholder='Language'
-                      defaultValue={'en-US'}
                       value={libraryLanguage}
                       onChange={handleLibraryLanguageChange}>
                       <option value='en-US'>English</option>

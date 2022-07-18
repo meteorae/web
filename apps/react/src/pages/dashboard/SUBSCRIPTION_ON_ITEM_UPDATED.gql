@@ -1,0 +1,23 @@
+subscription OnItemUpdated {
+  onItemUpdated {
+    id
+    ... on Movie {
+      title
+      thumb
+      releaseDate
+    }
+    ... on MusicAlbum {
+      title
+      thumb
+      artist {
+        id
+        name
+      }
+    }
+    ... on PhotoAlbum {
+      title
+      thumb
+      releaseDate
+    }
+  }
+}

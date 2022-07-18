@@ -51,12 +51,7 @@ function Navbar({ toggleCollapsed }: NavbarProps) {
         }}
         onClick={toggleCollapsed}
       />
-      <Link
-        aria-label={'Go to the home page'}
-        as={RouterLink}
-        flexGrow={0}
-        px={2}
-        to='/'>
+      <Link as={RouterLink} flexGrow={0} px={2} to='/'>
         <Box
           as={Logo as unknown as FunctionComponent}
           color={useColorModeValue('red.500', 'white')}

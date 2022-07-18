@@ -1,0 +1,7 @@
+query GetLibraries {
+  libraries {
+    id
+    name
+    type
+  }
+}

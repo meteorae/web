@@ -11,6 +11,8 @@ import { mdiPlay } from '@mdi/js';
 import Icon from '@mdi/react';
 import { DateTime } from 'luxon';
 import { useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 import { Link as ReactLink } from 'react-router-dom';
 
 interface ItemCardOptions {
@@ -52,18 +54,28 @@ function MediaCard({ item, width, square, seen, ...props }: ItemCardProps) {
           w={width}
           h={Math.round(width * heightMultiplier)}>
           {item?.thumb ? (
-            <Image
+            <Box
               borderRadius='md'
               w={width}
               maxW={width}
               h={Math.round(width * heightMultiplier)}
               maxH={Math.round(width * heightMultiplier)}
-              objectFit='cover'
               overflow='hidden'
-              alt={item?.title ?? ''}
-              src={`${item.thumb}&width=260&height=390`}
               shadow='md'
-            />
+              bg={overlayColor}>
+              <LazyLoadImage
+                effect='opacity'
+                alt={item?.title ?? ''}
+                src={`${item.thumb}&width=260&height=390`}
+                style={{ objectFit: 'cover', height: '100%', width: '100%' }}
+                wrapperProps={{
+                  style: {
+                    width: '100%',
+                    height: '100%',
+                  },
+                }}
+              />
+            </Box>
           ) : (
             <Box
               borderRadius='md'

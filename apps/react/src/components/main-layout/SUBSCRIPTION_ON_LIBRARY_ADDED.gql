@@ -1,0 +1,7 @@
+subscription OnLibraryAdded {
+  onLibraryAdded {
+    id
+    name
+    type
+  }
+}
