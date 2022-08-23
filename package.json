@@ -132,7 +132,7 @@
     "lint-staged": "^12.3.4",
     "postcss": "^8.4.6",
     "prettier": "^2.5.1",
-    "semantic-release": "^19.0.2",
+    "semantic-release": "^19.0.4",
     "storybook-addon-performance": "^0.16.1"
   },
   "config": {
