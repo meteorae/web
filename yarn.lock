@@ -4693,7 +4693,7 @@
   dependencies:
     core-js "^3.8.2"
 
-"@storybook/core-server@6.5.10", "@storybook/core-server@~6.5.9":
+"@storybook/core-server@6.5.10", "@storybook/core-server@~6.5.10":
   version "6.5.10"
   resolved "https://registry.yarnpkg.com/@storybook/core-server/-/core-server-6.5.10.tgz#ada3d647833c02cb8c742281c1f314ff866f96f8"
   integrity sha512-jqwpA0ccA8X5ck4esWBid04+cEIVqirdAcqJeNb9IZAD+bRreO4Im8ilzr7jc5AmQ9fkqHs2NByFKh9TITp8NQ==
