@@ -17,6 +17,9 @@ module.exports = {
     '@storybook/addon-a11y',
     '@chakra-ui/storybook-addon',
   ],
+  features: {
+    emotionAlias: false,
+  },
   webpackFinal: async (config, { configType }) => {
     // apply any global webpack configs that might have been specified in .storybook/main.js
     if (rootMain.webpackFinal) {
