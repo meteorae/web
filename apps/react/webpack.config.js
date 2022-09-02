@@ -22,6 +22,7 @@ module.exports = (config) => {
           target: 'http://localhost:42000',
         },
       ],
+      historyApiFallback: true,
     },
   });
 };

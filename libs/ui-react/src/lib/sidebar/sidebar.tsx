@@ -33,7 +33,7 @@ export function getIconFromLibrary(
   switch (library?.type) {
     case 'movie':
       return mdiMovie;
-    case 'image':
+    case 'photo':
       return mdiImage;
     case 'music':
       return mdiMusic;
@@ -73,7 +73,7 @@ function Sidebar({
       </SidebarItem>
       {(libraries ?? []).map((library) => (
         <SidebarItem
-          to={`/library/${library?.id}`}
+          to={`/media/library/${library?.id}`}
           icon={getIconFromLibrary(library)}
           key={library?.id}>
           {library?.name || ''}

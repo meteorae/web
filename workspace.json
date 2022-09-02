@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "graphql-types": "libs/graphql-types",
     "react": "apps/react",
     "react-e2e": "apps/react-e2e",
     "tv": "apps/tv",

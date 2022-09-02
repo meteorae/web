@@ -1,7 +1,9 @@
-import { gql, useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import {
   Button,
   Flex,
+  FormControl,
+  FormLabel,
   Grid,
   HStack,
   Input,
@@ -27,25 +29,16 @@ import { mdiImage, mdiMovie, mdiMusic, mdiPlus, mdiTelevision } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useState } from 'react';
 
-import LibraryRadioButton from '../library-radio-button/library-radio-button';
+import {
+  CreateLibraryDocument,
+  CreateLibraryMutation,
+  CreateLibraryMutationVariables,
+  ScannersAndAgentsDocument,
+  ScannersAndAgentsQuery,
+  ScannersAndAgentsQueryVariables,
+} from '@meteorae/graphql-types';
 
-const CREATE_LIBRARY = gql`
-  mutation CreateLibrary(
-    $type: String!
-    $name: String!
-    $language: String!
-    $locations: [String!]!
-  ) {
-    addLibrary(
-      type: $type
-      name: $name
-      language: $language
-      locations: $locations
-    ) {
-      name
-    }
-  }
-`;
+import LibraryRadioButton from '../library-radio-button/library-radio-button';
 
 export interface ModalLibraryCreateProps {
   isOpen: boolean;
@@ -56,7 +49,10 @@ export function ModalLibraryCreate({
   isOpen,
   onClose,
 }: ModalLibraryCreateProps) {
-  const [addLibrary] = useMutation(CREATE_LIBRARY);
+  const [addLibrary] = useMutation<
+    CreateLibraryMutation,
+    CreateLibraryMutationVariables
+  >(CreateLibraryDocument);
 
   const toast = useToast();
 
@@ -65,6 +61,17 @@ export function ModalLibraryCreate({
   const [libraryLanguage, setLibraryLanguage] = useState('en-US');
   const [libraryFolder, setLibraryFolder] = useState('');
   const [libraryType, setLibraryType] = useState('movie');
+  const [libraryScanner, setLibraryScanner] = useState('');
+  const [libraryAgent, setLibraryAgent] = useState('');
+
+  const { data: scannersAndAgents, refetch: refetchScanners } = useQuery<
+    ScannersAndAgentsQuery,
+    ScannersAndAgentsQueryVariables
+  >(ScannersAndAgentsDocument, {
+    variables: {
+      libraryType: libraryType,
+    },
+  });
 
   const options = [
     { name: 'Movie', icon: mdiMovie, value: 'movie' },
@@ -75,7 +82,15 @@ export function ModalLibraryCreate({
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: 'library-type',
-    onChange: (event: any) => setLibraryType(event),
+    onChange: (event) => {
+      setLibraryType(event);
+
+      refetchScanners({ libraryType: event });
+
+      const optionName = options.find((option) => option.value === event)?.name;
+
+      setLibraryName(optionName ?? '');
+    },
   });
 
   const group = getRootProps();
@@ -90,6 +105,12 @@ export function ModalLibraryCreate({
           name: libraryName,
           language: libraryLanguage,
           locations: [libraryFolder],
+          scanner: libraryScanner
+            ? libraryScanner
+            : scannersAndAgents?.scanners?.[0].identifier ?? '',
+          agent: libraryAgent
+            ? libraryAgent
+            : scannersAndAgents?.agents?.[0].identifier ?? '',
         },
         onError: (error) => {
           toast({
@@ -128,6 +149,14 @@ export function ModalLibraryCreate({
 
   const handleLibraryFolderChange = (event: any) => {
     setLibraryFolder(event.target?.value);
+  };
+
+  const handleLibraryScannerChange = (event: any) => {
+    setLibraryScanner(event.target?.value);
+  };
+
+  const handleLibraryAgentChange = (event: any) => {
+    setLibraryAgent(event.target?.value);
   };
 
   return (
@@ -185,20 +214,25 @@ export function ModalLibraryCreate({
                     })}
                   </Grid>
                   <HStack flexGrow={0} spacing={3}>
-                    <Input
-                      required
-                      variant='filled'
-                      placeholder='Name'
-                      value={libraryName}
-                      onChange={handleLibraryNameChange}
-                    />
-                    <Select
-                      required
-                      placeholder='Language'
-                      value={libraryLanguage}
-                      onChange={handleLibraryLanguageChange}>
-                      <option value='en-US'>English</option>
-                    </Select>
+                    <FormControl isRequired>
+                      <FormLabel>Name</FormLabel>
+                      <Input
+                        required
+                        variant='filled'
+                        placeholder='Name'
+                        value={libraryName}
+                        onChange={handleLibraryNameChange}
+                      />
+                    </FormControl>
+                    <FormControl isRequired>
+                      <FormLabel>Language</FormLabel>
+                      <Select
+                        required
+                        value={libraryLanguage}
+                        onChange={handleLibraryLanguageChange}>
+                        <option value='en-US'>English</option>
+                      </Select>
+                    </FormControl>
                   </HStack>
                 </TabPanel>
                 <TabPanel
@@ -217,6 +251,39 @@ export function ModalLibraryCreate({
                     This is a temporary input for one folder path, pending
                     proper UI implementation.
                   </Text>
+                </TabPanel>
+                <TabPanel
+                  minHeight={'full'}
+                  display={'flex'}
+                  flexDirection={'column'}>
+                  <FormControl isRequired>
+                    <FormLabel>Scanner</FormLabel>
+                    <Select
+                      required
+                      value={libraryScanner}
+                      onChange={handleLibraryScannerChange}>
+                      {scannersAndAgents?.scanners?.map((scanner) => (
+                        <option
+                          key={scanner.identifier}
+                          value={scanner.identifier}>
+                          {scanner.name}
+                        </option>
+                      ))}
+                    </Select>
+                  </FormControl>
+                  <FormControl isRequired>
+                    <FormLabel>Agent</FormLabel>
+                    <Select
+                      required
+                      value={libraryAgent}
+                      onChange={handleLibraryAgentChange}>
+                      {scannersAndAgents?.agents?.map((agent) => (
+                        <option key={agent.identifier} value={agent.identifier}>
+                          {agent.name}
+                        </option>
+                      ))}
+                    </Select>
+                  </FormControl>
                 </TabPanel>
               </TabPanels>
             </Tabs>

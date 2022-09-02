@@ -1,0 +1,13 @@
+{
+  "buttonBack": "Back",
+  "buttonConnect": "Connect",
+  "buttonErase": "Erase",
+  "buttonLinkManually": "Manually",
+  "buttonLinkWithMeteorae": "With Meteorae.tv",
+  "welcomeAlreadySetup": "Already set up? Link the app",
+  "welcomeEnjoy": "Enjoy your movies, TV shows, music, and more, on all your devices.",
+  "welcomeGetStartedAt": "Get started at https://meteorae.tv",
+  "linkWithMeteoraeFirstLine": "To sign in, visit https://meteorae.tv/link",
+  "linkWithMeteoraeSecondLine": "from a web browser on another device, and enter the code below:",
+  "linkManuallyDescription": "To sign in, enter your server address below:"
+}

@@ -1,0 +1,16 @@
+schema: http://127.0.0.1:42000/graphql
+documents:
+  - ./apps/**/src/**/*.gql
+  - ./libs/**/src/**/*.gql
+extensions:
+  codegen:
+    generates:
+      ./libs/graphql-types/src/generated.ts:
+        plugins:
+          - typescript
+          - typescript-operations
+          - typed-document-node
+generates:
+  ./schema.gql:
+    plugins:
+      - schema-ast

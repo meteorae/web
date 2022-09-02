@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "default": "en"
+  },
+  "en": "translations/en.json",
+  "fr": "translations/fr.json"
+}

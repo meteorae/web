@@ -1,0 +1,21 @@
+query GetItems($libraryId: ID!, $offset: Int, $limit: Int) {
+  items(libraryId: $libraryId, offset: $offset, limit: $limit) {
+    items {
+      __typename
+      id
+      title
+      thumb {
+        url
+      }
+      startDate
+      isRefreshing
+    }
+    total
+  }
+
+  library(id: $libraryId) {
+    id
+    name
+    type
+  }
+}

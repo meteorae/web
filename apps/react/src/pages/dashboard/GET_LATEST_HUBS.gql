@@ -6,24 +6,12 @@ query GetLatest {
     }
     items {
       id
-      ... on Movie {
-        title
-        thumb
-        releaseDate
+      title
+      thumb {
+        url
       }
-      ... on MusicAlbum {
-        title
-        thumb
-        artist {
-          id
-          name
-        }
-      }
-      ... on PhotoAlbum {
-        title
-        thumb
-        releaseDate
-      }
+      startDate
+      isRefreshing
     }
   }
 }

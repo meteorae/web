@@ -1,0 +1,11 @@
+subscription OnItemUpdated {
+  onItemUpdated {
+    id
+    title
+    thumb {
+      url
+    }
+    startDate
+    isRefreshing
+  }
+}

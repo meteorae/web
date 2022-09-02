@@ -75,7 +75,30 @@ const scalarLink = ApolloLink.from([withScalars({ schema, typesMap })]);
 
 const apolloClient = new ApolloClient({
   link: splitLink,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          items: {
+            keyArgs: ['libraryId'],
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            merge(existing = {}, incoming, { args: { offset = 0 } }) {
+              return mergeItemResults(existing, incoming, offset);
+            },
+          },
+          children: {
+            keyArgs: ['item'],
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            merge(existing = {}, incoming, { args: { offset = 0 } }) {
+              return mergeItemResults(existing, incoming, offset);
+            },
+          },
+        },
+      },
+    },
+  }),
 });
 
 export default apolloClient;

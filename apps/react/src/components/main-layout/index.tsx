@@ -1,16 +1,18 @@
-import { useQuery } from '@apollo/client';
+import { useQuery, useSubscription } from '@apollo/client';
 import { Flex } from '@chakra-ui/layout';
 import { Spinner, useToast } from '@chakra-ui/react';
 import { Fragment, Suspense } from 'react';
 
-import { Navbar, Sidebar } from '@meteorae/ui-react';
-
 import {
   GetLibrariesDocument,
   GetLibrariesQuery,
+  OnItemUpdatedDocument,
+  OnItemUpdatedSubscription,
   OnLibraryAddedDocument,
   OnLibraryAddedSubscription,
-} from '../../generated';
+} from '@meteorae/graphql-types';
+import { Navbar, Sidebar } from '@meteorae/ui-react';
+
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 type MainLayoutProps = {
@@ -35,6 +37,8 @@ function MainLayout({ children }: MainLayoutProps) {
       },
     },
   );
+
+  useSubscription<OnItemUpdatedSubscription>(OnItemUpdatedDocument, {});
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);

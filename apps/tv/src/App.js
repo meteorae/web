@@ -1,58 +1,33 @@
-import { Lightning, Utils } from '@lightningjs/sdk';
+import { Router, Utils } from '@lightningjs/sdk';
 
-export default class App extends Lightning.Component {
+import routes from './lib/routes';
+
+export default class App extends Router.App {
   static getFonts() {
     return [
+      { family: 'Bold', url: Utils.asset('fonts/Roboto-Bold.ttf') },
       { family: 'Regular', url: Utils.asset('fonts/Roboto-Regular.ttf') },
+      { family: 'Light', url: Utils.asset('fonts/Roboto-Light.ttf') },
+      { family: 'Thin', url: Utils.asset('fonts/Roboto-Thin.ttf') },
     ];
+  }
+
+  static language() {
+    // TODO: Detect platform language
+    return 'fr';
+  }
+
+  _setup() {
+    Router.startRouter(routes, this);
   }
 
   static _template() {
     return {
-      Background: {
-        w: 1920,
-        h: 1080,
-        color: 0xfffbb03b,
-        src: Utils.asset('images/background.png'),
-      },
-      Logo: {
-        mountX: 0.5,
-        mountY: 1,
-        x: 960,
-        y: 600,
-        src: Utils.asset('images/logo.png'),
-      },
-      Text: {
-        mount: 0.5,
-        x: 960,
-        y: 720,
-        text: {
-          text: "Let's start Building!",
-          fontFace: 'Regular',
-          fontSize: 64,
-          textColor: 0xbbffffff,
-        },
-      },
+      ...super._template(),
     };
   }
 
-  _init() {
-    this.tag('Background')
-      .animation({
-        duration: 15,
-        repeat: -1,
-        actions: [
-          {
-            t: '',
-            p: 'color',
-            v: {
-              0: { v: 0xfffbb03b },
-              0.5: { v: 0xfff46730 },
-              0.8: { v: 0xfffbb03b },
-            },
-          },
-        ],
-      })
-      .start();
+  _handleAppClose() {
+    this.application.closeApp();
   }
 }

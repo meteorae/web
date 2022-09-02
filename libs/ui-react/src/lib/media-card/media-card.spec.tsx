@@ -7,7 +7,7 @@ import MediaCard from './media-card';
 export const TEST_ITEM = {
   id: 1,
   title: 'Test Item',
-  releaseDate: '2020-01-01',
+  startDate: '2020-01-01',
   thumb: 'https://via.placeholder.com/260x390',
 };
 
@@ -79,6 +79,6 @@ describe('MediaCard', () => {
 
     expect(getByText(TEST_ITEM.title)).toBeTruthy();
     expect(getByText('2020')).toBeTruthy();
-    expect(queryByText(TEST_ITEM.releaseDate)).not.toBeInTheDocument();
+    expect(queryByText(TEST_ITEM.startDate)).not.toBeInTheDocument();
   });
 });

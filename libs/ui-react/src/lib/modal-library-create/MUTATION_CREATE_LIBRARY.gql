@@ -1,0 +1,19 @@
+mutation CreateLibrary(
+  $type: String!
+  $name: String!
+  $language: String!
+  $locations: [String!]!
+  $scanner: String!
+  $agent: String!
+) {
+  addLibrary(
+    type: $type
+    name: $name
+    language: $language
+    locations: $locations
+    scanner: $scanner
+    agent: $agent
+  ) {
+    name
+  }
+}

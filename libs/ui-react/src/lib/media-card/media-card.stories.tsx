@@ -6,7 +6,7 @@ import MediaCard from './media-card';
 const TEST_ITEM = {
   id: 1,
   title: 'Test Item',
-  releaseDate: '2020-01-01',
+  startDate: '2020-01-01',
   thumb: 'https://via.placeholder.com/260x390',
 };
 

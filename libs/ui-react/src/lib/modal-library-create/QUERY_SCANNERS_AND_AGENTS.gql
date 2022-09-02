@@ -1,0 +1,10 @@
+query ScannersAndAgents($libraryType: String!) {
+  scanners(libraryType: $libraryType) {
+    name
+    identifier
+  }
+  agents(libraryType: $libraryType) {
+    name
+    identifier
+  }
+}

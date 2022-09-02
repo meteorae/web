@@ -1,0 +1,13 @@
+{
+  "buttonBack": "Retour",
+  "buttonConnect": "Se connecter",
+  "buttonErase": "Effacer",
+  "buttonLinkManually": "Manuellement",
+  "buttonLinkWithMeteorae": "Avec Meteorae.tv",
+  "welcomeAlreadySetup": "Déjà installé ? Reliez l'application",
+  "welcomeEnjoy": "Profitez de vos films, séries TV, musique et plus, sur tout vos appareils.",
+  "welcomeGetStartedAt": "Pour commencer, rendez-vous sur https://meteorae.tv",
+  "linkWithMeteoraeFirstLine": "Pour vous connecter, visitez https://meteorae.tv/link",
+  "linkWithMeteoraeSecondLine": "depuis un navigateur web sur un autre appareil, et entrez le code ci-dessous:",
+  "linkManuallyDescription": "Pour vous connecter, enterez l'adresse de vote serveur:"
+}

@@ -5,7 +5,9 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "graphql:coverage": "graphql coverage",
+    "graphql:validate": "graphql validate"
   },
   "private": true,
   "dependencies": {
@@ -16,6 +18,7 @@
     "@emotion/styled": "^11.9.3",
     "@graphql-tools/schema": "^8.5.0",
     "@lightningjs/sdk": "^4.8.3",
+    "@lightningjs/ui-components": "^1.3.1",
     "@mdi/js": "^6.9.96",
     "@mdi/react": "^1.6.0",
     "@reduxjs/toolkit": "1.8.2",
@@ -36,6 +39,7 @@
     "react-lazy-load-image-component": "^1.5.5",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
+    "react-virtualized": "^9.22.3",
     "redux-first-history": "^5.0.12",
     "regenerator-runtime": "0.13.7",
     "swiper": "^8.3.1",
@@ -45,6 +49,9 @@
     "@babel/core": "7.12.13",
     "@babel/preset-typescript": "7.12.13",
     "@emotion/babel-plugin": "11.9.2",
+    "@graphql-cli/codegen": "2.3.1",
+    "@graphql-cli/coverage": "2.1.0",
+    "@graphql-cli/validate": "2.1.0",
     "@graphql-codegen/cli": "^2.8.1",
     "@graphql-codegen/typed-document-node": "^2.3.1",
     "@graphql-codegen/typescript": "^2.7.1",
@@ -74,6 +81,7 @@
     "@types/jest-axe": "^3.5.4",
     "@types/lodash-es": "^4.17.6",
     "@types/luxon": "^2.3.2",
+    "@types/node": "16.11.7",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
     "@types/react-lazy-load-image-component": "^1.5.2",
@@ -97,6 +105,7 @@
     "eslint-plugin-storybook": "^0.6.1",
     "eslint-plugin-testing-library": "^5.5.1",
     "graphql": "^16.5.0",
+    "graphql-cli": "4.1.0",
     "jest": "27.5.1",
     "jest-axe": "^6.0.0",
     "nx": "14.4.2",

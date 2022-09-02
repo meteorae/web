@@ -1,39 +1,86 @@
 import {
   Box,
+  Flex,
   IconButton,
-  Image,
   Link,
   PropsOf,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { mdiPlay } from '@mdi/js';
+import {
+  mdiAccount,
+  mdiBookmarkBoxMultiple,
+  mdiCamera,
+  mdiDisc,
+  mdiFilmstrip,
+  mdiHelp,
+  mdiMagnify,
+  mdiPlay,
+  mdiTelevisionClassic,
+  mdiVideo,
+} from '@mdi/js';
 import Icon from '@mdi/react';
 import { DateTime } from 'luxon';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 import { Link as ReactLink } from 'react-router-dom';
 
+import { Item, Maybe, Movie } from '@meteorae/graphql-types';
+
 interface ItemCardOptions {
-  item?: any;
+  item?: Maybe<Movie>;
   width: number;
   square?: boolean;
   seen?: boolean;
+}
+
+function getIconFromItemType(type: string): string {
+  switch (type) {
+    case 'movie':
+      return mdiFilmstrip;
+    case 'MusicAlbumItem':
+    case 'MusicMediumItem':
+    case 'MusicTrackItem':
+      return mdiDisc;
+    case 'TVSeasonItem':
+    case 'TVShowItem':
+    case 'TVEpisodeItem':
+      return mdiTelevisionClassic;
+    case 'ImageItem':
+    case 'ImageAlbumItem':
+      return mdiCamera;
+    case 'VideoClipItem':
+      return mdiVideo;
+    case 'PersonItem':
+      return mdiAccount;
+    case 'CollectionItem':
+      return mdiBookmarkBoxMultiple;
+    default:
+      return mdiHelp;
+  }
 }
 
 interface ItemCardProps extends PropsOf<'div'>, ItemCardOptions {}
 
 function MediaCard({ item, width, square, seen, ...props }: ItemCardProps) {
   const [showOverlay, setShowOverlay] = useState(false);
+  const fallbackColor = useColorModeValue('gray.300', 'gray.700');
   const overlayColor = useColorModeValue('gray.200', 'gray.800');
   const overlayIconColor = useColorModeValue('black', 'white');
 
-  if (!square && item.__typename === 'MusicAlbum') {
+  if (
+    !square &&
+    ['MusicAlbumItem', 'MusicMediumItem', 'MusicTrackItem'].includes(
+      item?.__typename ?? '',
+    )
+  ) {
     square = true;
   }
 
   const heightMultiplier = square ? 1 : 1.5;
+
+  const imageUrl = item?.thumb?.url ?? false;
 
   return (
     <Box
@@ -53,7 +100,7 @@ function MediaCard({ item, width, square, seen, ...props }: ItemCardProps) {
           position='relative'
           w={width}
           h={Math.round(width * heightMultiplier)}>
-          {item?.thumb ? (
+          {imageUrl ? (
             <Box
               borderRadius='md'
               w={width}
@@ -62,11 +109,11 @@ function MediaCard({ item, width, square, seen, ...props }: ItemCardProps) {
               maxH={Math.round(width * heightMultiplier)}
               overflow='hidden'
               shadow='md'
-              bg={overlayColor}>
+              bg={fallbackColor}>
               <LazyLoadImage
                 effect='opacity'
                 alt={item?.title ?? ''}
-                src={`${item.thumb}&width=260&height=390`}
+                src={`${imageUrl}&width=260&height=390`}
                 style={{ objectFit: 'cover', height: '100%', width: '100%' }}
                 wrapperProps={{
                   style: {
@@ -85,14 +132,26 @@ function MediaCard({ item, width, square, seen, ...props }: ItemCardProps) {
               maxH={Math.round(width * heightMultiplier)}
               overflow='hidden'
               shadow='md'
-              bg={overlayColor}
-            />
+              bg={fallbackColor}>
+              <Flex
+                color={overlayColor}
+                left='50%'
+                transform='translate(-50%, -50%)'
+                top='50%'
+                position='absolute'>
+                <Icon
+                  path={getIconFromItemType(item?.__typename ?? '')}
+                  size={3.5}
+                />
+              </Flex>
+            </Box>
           )}
         </Box>
         <Link
-          aria-label={item?.title ?? ''}
           as={ReactLink}
           to={`/item/${item?.id}`}
+          aria-label={item?.title ?? ''}
+          role='link'
           borderRadius='md'
           display='block'
           height={Math.round(width * heightMultiplier)}
@@ -101,11 +160,28 @@ function MediaCard({ item, width, square, seen, ...props }: ItemCardProps) {
           transform='translate(-50%, -50%)'
           top='50%'
           position='absolute'
-          backgroundColor={showOverlay ? overlayColor : 'transparent'}
-          opacity={showOverlay ? 0.8 : 0}
+          backgroundColor={
+            showOverlay || item?.isRefreshing ? overlayColor : 'transparent'
+          }
+          opacity={showOverlay || item?.isRefreshing ? 0.8 : 0}
           borderWidth={showOverlay ? '1px' : '0'}
           borderColor={showOverlay ? 'red.500' : 'transparent'}
         />
+        {item?.isRefreshing && !showOverlay && (
+          <IconButton
+            colorScheme={overlayIconColor}
+            borderRadius='full'
+            left='50%'
+            transform='translate(-50%, -50%)'
+            top='50%'
+            position='absolute'
+            variant='outline'
+            borderWidth='3px'
+            size='lg'
+            aria-label={`Play ${item?.title}`}
+            icon={<Icon path={mdiMagnify} size={1.5} />}
+          />
+        )}
         {showOverlay && (
           <IconButton
             colorScheme={overlayIconColor}
@@ -155,6 +231,8 @@ function MediaCard({ item, width, square, seen, ...props }: ItemCardProps) {
         <Link
           as={ReactLink}
           to={`/item/${item?.id}`}
+          title={item?.title}
+          role='link'
           fontSize='sm'
           w={width}
           maxW={width}
@@ -162,28 +240,32 @@ function MediaCard({ item, width, square, seen, ...props }: ItemCardProps) {
           noOfLines={1}>
           {item?.title}
         </Link>
-        {item.__typename === 'MusicAlbum' ? (
+        {item?.__typename === 'Movie' ? (
           <Link
             as={ReactLink}
-            to={`/item/${item?.artist.id}`}
+            to={`/item/${item?.id}`}
+            title={item?.title}
+            role='link'
             fontSize='xs'
+            h={6}
             w={width}
             maxW={width}
             pt={1}
             opacity='0.8'
             noOfLines={1}>
-            {item?.artist.name}
+            {item?.title}
           </Link>
         ) : (
           <Text
             fontSize='xs'
+            h={6}
             w={width}
             maxW={width}
             pt={1}
             opacity='0.8'
             noOfLines={1}>
-            {item && 'releaseDate' in item && item?.releaseDate
-              ? DateTime.fromISO(item.releaseDate).toFormat('yyyy')
+            {item && 'startDate' in item && item?.startDate
+              ? DateTime.fromISO(item.startDate).toFormat('yyyy')
               : ''}
           </Text>
         )}
@@ -192,4 +274,4 @@ function MediaCard({ item, width, square, seen, ...props }: ItemCardProps) {
   );
 }
 
-export default MediaCard;
+export default memo(MediaCard);
