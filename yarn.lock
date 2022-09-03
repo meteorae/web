@@ -3817,21 +3817,21 @@
     tar "6.1.11"
     yargs-parser ">=21.0.1"
 
-"@nrwl/react@14.6.3":
-  version "14.6.3"
-  resolved "https://registry.yarnpkg.com/@nrwl/react/-/react-14.6.3.tgz#584488ca647390c031902bb62f1e754d9b93f035"
-  integrity sha512-PLkWMM5a1nd5m+zCldBYIgECWHsVytPJC2xGorbU/XRIg/5bvR4KDSQY4PF04WlIdcskaHYGQywZQdMpb3tRjw==
+"@nrwl/react@14.6.4":
+  version "14.6.4"
+  resolved "https://registry.yarnpkg.com/@nrwl/react/-/react-14.6.4.tgz#28343fd4043bd1fe4a369e254d44258a43f72ef6"
+  integrity sha512-K7Qjl/TjlQtxt88tvc+ZMQJh5qlkbb4pfr17Ca+gR8y+6TEmrJJvMex/rf108JZW+sioUv6L3Dvg1glmQR0sOw==
   dependencies:
     "@babel/core" "^7.15.0"
     "@babel/preset-react" "^7.14.5"
-    "@nrwl/cypress" "14.6.3"
-    "@nrwl/devkit" "14.6.3"
-    "@nrwl/jest" "14.6.3"
-    "@nrwl/js" "14.6.3"
-    "@nrwl/linter" "14.6.3"
-    "@nrwl/storybook" "14.6.3"
-    "@nrwl/web" "14.6.3"
-    "@nrwl/workspace" "14.6.3"
+    "@nrwl/cypress" "14.6.4"
+    "@nrwl/devkit" "14.6.4"
+    "@nrwl/jest" "14.6.4"
+    "@nrwl/js" "14.6.4"
+    "@nrwl/linter" "14.6.4"
+    "@nrwl/storybook" "14.6.4"
+    "@nrwl/web" "14.6.4"
+    "@nrwl/workspace" "14.6.4"
     "@pmmmwh/react-refresh-webpack-plugin" "^0.5.7"
     "@svgr/webpack" "^6.1.2"
     chalk "4.1.0"
@@ -3845,21 +3845,6 @@
     url-loader "^4.1.1"
     webpack "^5.58.1"
     webpack-merge "^5.8.0"
-
-"@nrwl/storybook@14.6.3":
-  version "14.6.3"
-  resolved "https://registry.yarnpkg.com/@nrwl/storybook/-/storybook-14.6.3.tgz#5530b50c1100c58c5e37266921f082eb58f7e5ac"
-  integrity sha512-Wkx7MeAJ0TN1wzGsQCe+SVRjM/VzKTtfZxOoXEEIf651sBk4Mhn3yCI3AdcRBeOy0gtUOiCoZTA4BXcXW+kwbg==
-  dependencies:
-    "@nrwl/cypress" "14.6.3"
-    "@nrwl/devkit" "14.6.3"
-    "@nrwl/linter" "14.6.3"
-    "@nrwl/workspace" "14.6.3"
-    core-js "^3.6.5"
-    dotenv "~10.0.0"
-    semver "7.3.4"
-    ts-loader "^9.3.1"
-    tsconfig-paths-webpack-plugin "3.5.2"
 
 "@nrwl/storybook@14.6.4":
   version "14.6.4"
