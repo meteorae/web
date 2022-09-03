@@ -46,7 +46,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "7.12.13",
+    "@babel/core": "7.18.13",
     "@babel/preset-typescript": "7.12.13",
     "@emotion/babel-plugin": "11.10.0",
     "@graphql-cli/codegen": "2.3.1",
