@@ -94,7 +94,7 @@
     "babel-loader": "8.1.0",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "cypress": "^10.2.0",
-    "eslint": "~8.15.0",
+    "eslint": "~8.23.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "2.26.0",
