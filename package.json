@@ -41,7 +41,7 @@
     "react-router-dom": "^6.3.0",
     "react-virtualized": "^9.22.3",
     "redux-first-history": "^5.0.12",
-    "regenerator-runtime": "0.13.7",
+    "regenerator-runtime": "0.13.9",
     "swiper": "^8.3.1",
     "tslib": "^2.3.0"
   },
