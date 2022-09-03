@@ -3467,18 +3467,19 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@lightningjs/core@*":
+"@lightningjs/core@*", "@lightningjs/core@^2.6.0":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@lightningjs/core/-/core-2.7.0.tgz#6277a30324b876c05c8e7922dc77ebba63af411d"
   integrity sha512-TXDq2IKe5ZNLnNVIzHKt4z0RzBb05CaqBGwGWiqKxgRLSOeEHj61thuanMHViM29hPL0NMRVUP+ja2BQaGCCRQ==
 
-"@lightningjs/sdk@^4.8.3":
-  version "4.8.3"
-  resolved "https://registry.yarnpkg.com/@lightningjs/sdk/-/sdk-4.8.3.tgz#be08b42cfd35bdc471e1994da82dec2c95aecdf8"
-  integrity sha512-PeGuMmMi0zYxXtQi/di1f23gHNKZ9nLqDQInGomLiq85iJ8BPhT3vchzbrYlHTxdyRX+iZ5b9PYL4uRUgPSPgQ==
+"@lightningjs/sdk@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@lightningjs/sdk/-/sdk-5.0.1.tgz#d45eda6c7a4fe0c577a137fb533894efa5cb5789"
+  integrity sha512-gtm+XVKmfTcSaP1CBqYhecd0mJnRtXPngIsCY4YVsMEWzw3oD6IoAP0iQtNUYNcHLJRFQbB9vUO3SSkFstQJZA==
   dependencies:
     "@babel/polyfill" "^7.11.5"
     "@lightningjs/core" "*"
+    "@metrological/sdk" "github:metrological/metrological-sdk"
     "@michieljs/execute-as-promise" "^1.0.0"
     deepmerge "^4.2.2"
     localCookie "github:WebPlatformForEmbedded/localCookie"
@@ -3539,6 +3540,18 @@
   version "1.6.22"
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
+
+"@metrological/sdk@github:metrological/metrological-sdk":
+  version "1.0.1"
+  uid "6eb8f1b27375729daa2b5bf22cbae607ca9f7bfa"
+  resolved "https://codeload.github.com/metrological/metrological-sdk/tar.gz/6eb8f1b27375729daa2b5bf22cbae607ca9f7bfa"
+  dependencies:
+    "@babel/polyfill" "^7.11.5"
+    "@lightningjs/core" "^2.6.0"
+    "@michieljs/execute-as-promise" "^1.0.0"
+    deepmerge "^4.2.2"
+    url-polyfill "^1.1.10"
+    whatwg-fetch "^3.0.0"
 
 "@michieljs/execute-as-promise@^1.0.0":
   version "1.0.0"
