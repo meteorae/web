@@ -77,7 +77,7 @@
     "@storybook/theming": "^6.5.10",
     "@svgr/webpack": "^6.3.1",
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "13.3.0",
+    "@testing-library/react": "13.4.0",
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",
     "@types/jest": "28.1.8",
     "@types/jest-axe": "^3.5.4",
