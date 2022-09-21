@@ -61,7 +61,7 @@
     "@nrwl/cypress": "14.6.4",
     "@nrwl/eslint-plugin-nx": "14.6.4",
     "@nrwl/jest": "14.6.5",
-    "@nrwl/linter": "14.6.4",
+    "@nrwl/linter": "14.7.8",
     "@nrwl/nx-cloud": "14.6.1",
     "@nrwl/react": "14.6.5",
     "@nrwl/storybook": "14.6.4",
