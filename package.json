@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "@chakra-ui/react": "^2.2.4",
+    "@chakra-ui/react": "^2.3.4",
     "@chakra-ui/storybook-addon": "^4.0.4",
     "@emotion/react": "11.10.4",
     "@emotion/styled": "11.10.4",
@@ -90,7 +90,7 @@
     "@types/react-router-dom": "5.3.3",
     "@typescript-eslint/eslint-plugin": "5.36.2",
     "@typescript-eslint/parser": "5.36.2",
-    "babel-jest": "29.0.2",
+    "babel-jest": "29.1.2",
     "babel-loader": "8.2.5",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "cypress": "^10.2.0",
