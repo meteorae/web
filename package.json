@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "@chakra-ui/react": "^2.2.4",
+    "@chakra-ui/react": "^2.3.4",
     "@chakra-ui/storybook-addon": "^4.0.4",
     "@emotion/react": "11.10.4",
     "@emotion/styled": "11.10.4",
@@ -74,7 +74,7 @@
     "@storybook/core-server": "~6.5.9",
     "@storybook/manager-webpack5": "~6.5.9",
     "@storybook/react": "~6.5.9",
-    "@storybook/theming": "^6.5.10",
+    "@storybook/theming": "^6.5.12",
     "@svgr/webpack": "^6.3.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "13.4.0",
