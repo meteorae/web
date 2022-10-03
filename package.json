@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "@chakra-ui/react": "^2.2.4",
+    "@chakra-ui/react": "^2.3.4",
     "@chakra-ui/storybook-addon": "^4.0.4",
     "@emotion/react": "11.10.4",
     "@emotion/styled": "11.10.4",
@@ -42,7 +42,7 @@
     "react-virtualized": "^9.22.3",
     "redux-first-history": "^5.0.12",
     "regenerator-runtime": "0.13.9",
-    "swiper": "^8.3.1",
+    "swiper": "^8.4.2",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
