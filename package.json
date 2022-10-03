@@ -23,7 +23,7 @@
     "@mdi/react": "^1.6.0",
     "@reduxjs/toolkit": "1.8.5",
     "@sentry/react": "^7.7.0",
-    "@sentry/tracing": "^7.7.0",
+    "@sentry/tracing": "^7.14.1",
     "apollo-link-scalars": "^4.0.1",
     "babel-plugin-graphql-tag": "^3.3.0",
     "core-js": "^3.25.4",
