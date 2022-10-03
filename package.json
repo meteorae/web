@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "@chakra-ui/react": "^2.2.4",
+    "@chakra-ui/react": "^2.3.4",
     "@chakra-ui/storybook-addon": "^4.0.4",
     "@emotion/react": "11.10.4",
     "@emotion/styled": "11.10.4",
@@ -52,7 +52,7 @@
     "@graphql-cli/codegen": "2.4.0",
     "@graphql-cli/coverage": "2.1.0",
     "@graphql-cli/validate": "2.1.0",
-    "@graphql-codegen/cli": "^2.8.1",
+    "@graphql-codegen/cli": "^2.13.2",
     "@graphql-codegen/typed-document-node": "^2.3.1",
     "@graphql-codegen/typescript": "^2.7.1",
     "@graphql-codegen/typescript-operations": "^2.5.1",
