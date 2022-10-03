@@ -3483,18 +3483,18 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@lightningjs/core@*", "@lightningjs/core@^2.6.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@lightningjs/core/-/core-2.7.0.tgz#6277a30324b876c05c8e7922dc77ebba63af411d"
-  integrity sha512-TXDq2IKe5ZNLnNVIzHKt4z0RzBb05CaqBGwGWiqKxgRLSOeEHj61thuanMHViM29hPL0NMRVUP+ja2BQaGCCRQ==
+"@lightningjs/core@^2.6.0", "@lightningjs/core@^2.7.0":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@lightningjs/core/-/core-2.7.1.tgz#8e5713b2c79ba481ad19235ba658c15e7aa3bd53"
+  integrity sha512-thkYy7gsb/7zpoVwXv2F2BwD+CylyziKfg044KB3He1hplMs70tsNY+RrVLaTmlPcOJGe4YaMj9P0502MGm44w==
 
-"@lightningjs/sdk@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@lightningjs/sdk/-/sdk-5.0.1.tgz#d45eda6c7a4fe0c577a137fb533894efa5cb5789"
-  integrity sha512-gtm+XVKmfTcSaP1CBqYhecd0mJnRtXPngIsCY4YVsMEWzw3oD6IoAP0iQtNUYNcHLJRFQbB9vUO3SSkFstQJZA==
+"@lightningjs/sdk@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@lightningjs/sdk/-/sdk-5.1.0.tgz#4ddf18fc0da0bc10afd51ce89427d8aeb5b9120d"
+  integrity sha512-tRGqNNx+QVbI0gEj+9drPK6uG30tMWb08RUaddtjmJ6YlUC4f0NDW6357Pw1ntclRDns+gIjPqQq1qFIeuLqlw==
   dependencies:
     "@babel/polyfill" "^7.11.5"
-    "@lightningjs/core" "*"
+    "@lightningjs/core" "^2.7.0"
     "@metrological/sdk" "github:metrological/metrological-sdk"
     "@michieljs/execute-as-promise" "^1.0.0"
     deepmerge "^4.2.2"
