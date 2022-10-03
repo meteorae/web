@@ -42,7 +42,7 @@
     "react-virtualized": "^9.22.3",
     "redux-first-history": "^5.0.12",
     "regenerator-runtime": "0.13.9",
-    "swiper": "^8.3.1",
+    "swiper": "^8.4.2",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
