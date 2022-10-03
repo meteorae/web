@@ -4023,21 +4023,6 @@
     rxjs "^6.5.4"
     tslib "^2.3.0"
 
-"@nrwl/storybook@14.6.4":
-  version "14.6.4"
-  resolved "https://registry.yarnpkg.com/@nrwl/storybook/-/storybook-14.6.4.tgz#a893180a7d032e99b2a2cf3d2fd85bc3fdc07c8c"
-  integrity sha512-iCUCctrBEq5uCkqqD5SaiKIfx8FESUyXS8cyHdFjkuLrtVXRGmCXWoNGMuRjHvhucloCo94FObuBdjdLZ3JqzA==
-  dependencies:
-    "@nrwl/cypress" "14.6.4"
-    "@nrwl/devkit" "14.6.4"
-    "@nrwl/linter" "14.6.4"
-    "@nrwl/workspace" "14.6.4"
-    core-js "^3.6.5"
-    dotenv "~10.0.0"
-    semver "7.3.4"
-    ts-loader "^9.3.1"
-    tsconfig-paths-webpack-plugin "3.5.2"
-
 "@nrwl/storybook@14.6.5":
   version "14.6.5"
   resolved "https://registry.yarnpkg.com/@nrwl/storybook/-/storybook-14.6.5.tgz#bdd4ee4495f33c2fa37bc0c564e55e3a68efa8aa"
@@ -4052,6 +4037,18 @@
     semver "7.3.4"
     ts-loader "^9.3.1"
     tsconfig-paths-webpack-plugin "3.5.2"
+
+"@nrwl/storybook@14.8.2":
+  version "14.8.2"
+  resolved "https://registry.yarnpkg.com/@nrwl/storybook/-/storybook-14.8.2.tgz#05f6ba8b0d60c2f58da4dfc4d937940fbac85a80"
+  integrity sha512-Fqt/hsMGW+Rj0JvZQenKXmVFDcOfQP8k3XRD28kK3Nxw/y2oigicRNY5dq9H4y/0Qk60EFng+TxHBpG0y7kdAw==
+  dependencies:
+    "@nrwl/cypress" "14.8.2"
+    "@nrwl/devkit" "14.8.2"
+    "@nrwl/linter" "14.8.2"
+    "@nrwl/workspace" "14.8.2"
+    dotenv "~10.0.0"
+    semver "7.3.4"
 
 "@nrwl/tao@14.6.4":
   version "14.6.4"
