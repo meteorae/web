@@ -3954,14 +3954,15 @@
     tmp "~0.2.1"
     tslib "^2.3.0"
 
-"@nrwl/nx-cloud@14.6.1":
-  version "14.6.1"
-  resolved "https://registry.yarnpkg.com/@nrwl/nx-cloud/-/nx-cloud-14.6.1.tgz#a781cb1a715c8cd0f0c64601aef29f9edb74d162"
-  integrity sha512-ffmt4BlfO9s8fJmXnnKIStmeq6960Ux825kBqz7Jq2y9BYm1DLopNfx54RJHZT6JCDDEt5hMSYTSJk7rV6ROng==
+"@nrwl/nx-cloud@15.0.1":
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/nx-cloud/-/nx-cloud-15.0.1.tgz#5bbc63c8d46396595ed651b559f55d51f9ee06c7"
+  integrity sha512-EvUxiXF/t8czg6ORWRZ3bTPfUHH45Z3VMubmnBEWmcB3IOXQu25Du7KmUCEAqjqb1spuWrsWRzSxkIrpz8Xl9g==
   dependencies:
-    axios "^0.21.1"
+    axios "^0.21.2"
     chalk "4.1.0"
     dotenv "~10.0.0"
+    fs-extra "^10.1.0"
     node-machine-id "^1.1.12"
     strip-json-comments "^3.1.1"
     tar "6.1.11"
@@ -7385,7 +7386,7 @@ axe-core@^4.2.0, axe-core@^4.4.3:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.4.3.tgz#11c74d23d5013c0fa5d183796729bc3482bd2f6f"
   integrity sha512-32+ub6kkdhhWick/UjvEwRchgoetXqTK14INLqbGm5U2TzBkBNF3nQtLYm8ovxSkQWArjEQvftCKryjZaATu3w==
 
-axios@^0.21.1:
+axios@^0.21.2:
   version "0.21.4"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
   integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
