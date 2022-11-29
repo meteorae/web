@@ -89,7 +89,7 @@
     "@types/react-lazy-load-image-component": "^1.5.2",
     "@types/react-router-dom": "5.3.3",
     "@typescript-eslint/eslint-plugin": "5.36.2",
-    "@typescript-eslint/parser": "5.36.2",
+    "@typescript-eslint/parser": "5.45.0",
     "babel-jest": "29.0.2",
     "babel-loader": "8.2.5",
     "babel-plugin-inline-react-svg": "^2.0.1",
