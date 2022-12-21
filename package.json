@@ -67,7 +67,7 @@
     "@nrwl/storybook": "14.8.2",
     "@nrwl/web": "14.8.2",
     "@nrwl/workspace": "14.6.5",
-    "@storybook/addon-a11y": "^6.5.9",
+    "@storybook/addon-a11y": "^6.5.15",
     "@storybook/addon-essentials": "~6.5.9",
     "@storybook/addons": "^6.5.10",
     "@storybook/builder-webpack5": "~6.5.9",
